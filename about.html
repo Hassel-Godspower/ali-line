@@ -12,15 +12,15 @@
   </p>
 
   <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:20px;">
-    <img src="images/factory.jpg" alt="Factory production" style="width:100%; border-radius:8px;">
-    <img src="images/installation.jpg" alt="Installation team" style="width:100%; border-radius:8px;">
-    <img src="images/wa-map.jpg" alt="Western Australia Map" style="width:100%; border-radius:8px;">
-    <img src="images/tim-giles.jpg" alt="Tim Giles at Homeshow" style="width:100%; border-radius:8px;">
+    <img src="./factory.jpg" alt="Factory production" style="width:100%; border-radius:8px;">
+    <img src="./installation.jpg" alt="Installation team" style="width:100%; border-radius:8px;">
+    <img src="./wa-map.jpg" alt="Western Australia Map" style="width:100%; border-radius:8px;">
+    <img src="./tim-giles.jpg" alt="Tim Giles at Homeshow" style="width:100%; border-radius:8px;">
   </div>
 </section>
 <script>
     // Load Header
-    fetch("inc/header.html")
+    fetch("./header.html")
     .then(response => response.text())
     .then(data => {
       document.getElementById("header-placeholder").innerHTML = data;
@@ -37,7 +37,7 @@
     .catch(error => console.error("Error loading header:", error));
     
     // Load Footer
-    fetch("inc/footer.html")
+    fetch("./footer.html")
     .then(response => response.text())
     .then(data => {
       document.getElementById("footer-placeholder").innerHTML = data;
