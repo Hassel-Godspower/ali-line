@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Subscribe - Ali-Line</title>
+  <style>
+    body {
+      font-family: 'Inter', Arial, sans-serif;
+      background-color: #f9fafb;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+
+    .subscribe-box {
+      background: #fff;
+      max-width: 420px;
+      width: 100%;
+      padding: 40px;
+      border-radius: 12px;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+
+    .subscribe-box h1 {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: #002b5c;
+      margin-bottom: 10px;
+    }
+
+    .subscribe-box p {
+      font-size: 0.95rem;
+      color: #555;
+      margin-bottom: 25px;
+    }
+
+    form {
+      display: grid;
+      gap: 15px;
+      text-align: left;
+    }
+
+    input[type="email"] {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 1rem;
+    }
+
+    button {
+      background-color: #002b5c;
+      color: #fff;
+      padding: 12px;
+      border: none;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background-color: #00408a;
+    }
+
+    .message {
+      margin-top: 20px;
+      font-size: 0.95rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="subscribe-box">
+    <h1>Stay Updated</h1>
+    <p>Subscribe to get the latest Ali-Line updates and product announcements.</p>
+
+    <form id="subscribeForm">
+      <input type="email" id="email" placeholder="Enter your email address" required />
+      <button type="submit">Subscribe</button>
+    </form>
+
+    <div id="message" class="message"></div>
+  </div>
+
+  <script>
+    const SUPABASE_URL = "https://stqibghktqvmhsffvwgz.supabase.co";
+    const API_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InN0cWliZ2hrdHF2bWhzZmZ2d2d6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTg4MjAxNzQsImV4cCI6MjA3NDM5NjE3NH0.RTwldFjlqpMgC3W07Iv6CSgLdm2B11hIdxuD_07Aebc";
+
+    const subscribeForm = document.getElementById("subscribeForm");
+    const messageBox = document.getElementById("message");
+
+    subscribeForm.addEventListener("submit", async (e) => {
+      e.preventDefault();
+
+      const email = document.getElementById("email").value.trim();
+
+      if (!email) {
+        messageBox.textContent = "❌ Please enter a valid email address.";
+        messageBox.style.color = "red";
+        return;
+      }
+
+      try {
+        const response = await fetch(`${SUPABASE_URL}/rest/v1/subscribers`, {
+          method: "POST",
+          headers: {
+            apikey: API_KEY,
+            Authorization: `Bearer ${API_KEY}`,
+            "Content-Type": "application/json",
+            Prefer: "return=representation",
+          },
+          body: JSON.stringify({ email }),
+        });
+
+        if (response.status === 201) {
+          messageBox.textContent = "✅ Thank you for subscribing!";
+          messageBox.style.color = "green";
+          subscribeForm.reset();
+        } else {
+          const error = await response.json();
+          console.error("Supabase error:", error);
+          messageBox.textContent = "⚠️ Subscription failed. Please try again.";
+          messageBox.style.color = "red";
+        }
+      } catch (err) {
+        console.error(err);
+        messageBox.textContent = "⚠️ Network error. Please try again.";
+        messageBox.style.color = "red";
+      }
+    });
+  </script>
+</body>
+</html>

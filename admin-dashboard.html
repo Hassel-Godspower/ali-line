@@ -1,0 +1,103 @@
+<?php
+session_start();
+
+// Only allow admins
+if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'admin') {
+    header("Location: login.php");
+    exit();
+}
+
+// Supabase Config
+$supabaseUrl = "https://stqibghktqvmhsffvwgz.supabase.co";
+$apiKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InN0cWliZ2hrdHF2bWhzZmZ2d2d6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTg4MjAxNzQsImV4cCI6MjA3NDM5NjE3NH0.RTwldFjlqpMgC3W07Iv6CSgLdm2B11hIdxuD_07Aebc";
+
+// Fetch data from Supabase function
+function fetchSupabase($endpoint, $apiKey) {
+    $url = $endpoint;
+
+    $ch = curl_init($url);
+    curl_setopt($ch, CURLOPT_HTTPHEADER, [
+        "apikey: $apiKey",
+        "Authorization: Bearer $apiKey",
+        "Content-Type: application/json"
+    ]);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    $response = curl_exec($ch);
+    curl_close($ch);
+
+    return json_decode($response, true);
+}
+
+// Fetch registered users from Supabase "users" table
+$users = fetchSupabase("$supabaseUrl/rest/v1/users?select=id,full_name,email,role,created_at", $apiKey);
+
+// Fetch subscribers from Supabase "subscribers" table
+$subscribers = fetchSupabase("$supabaseUrl/rest/v1/subscribers?select=id,email,created_at", $apiKey);
+
+?>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Dashboard</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        h2 { color: #002b5c; }
+        table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+        th, td { padding: 10px; border: 1px solid #ddd; text-align: left; }
+        th { background-color: #002b5c; color: white; }
+        tr:nth-child(even) { background-color: #f9f9f9; }
+        .logout { display: inline-block; margin: 10px 0; padding: 8px 16px; background: #c00; color: #fff; border-radius: 4px; text-decoration: none; }
+        .logout:hover { background: #900; }
+    </style>
+</head>
+<body>
+    <h2>Welcome Admin, <?php echo htmlspecialchars($_SESSION['username']); ?>!</h2>
+    <a href="logout.php" class="logout">Logout</a>
+
+    <!-- Registered Users -->
+    <h3>Registered Users</h3>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Full Name</th>
+            <th>Email</th>
+            <th>Role</th>
+            <th>Date Registered</th>
+        </tr>
+        <?php if (!empty($users)): ?>
+            <?php foreach ($users as $user): ?>
+                <tr>
+                    <td><?= htmlspecialchars($user['id']); ?></td>
+                    <td><?= htmlspecialchars($user['full_name']); ?></td>
+                    <td><?= htmlspecialchars($user['email']); ?></td>
+                    <td><?= htmlspecialchars($user['role']); ?></td>
+                    <td><?= htmlspecialchars($user['created_at']); ?></td>
+                </tr>
+            <?php endforeach; ?>
+        <?php else: ?>
+            <tr><td colspan="5">No registered users found.</td></tr>
+        <?php endif; ?>
+    </table>
+
+    <!-- Subscribers -->
+    <h3>Subscribers</h3>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Email</th>
+            <th>Date Subscribed</th>
+        </tr>
+        <?php if (!empty($subscribers)): ?>
+            <?php foreach ($subscribers as $sub): ?>
+                <tr>
+                    <td><?= htmlspecialchars($sub['id']); ?></td>
+                    <td><?= htmlspecialchars($sub['email']); ?></td>
+                    <td><?= htmlspecialchars($sub['created_at']); ?></td>
+                </tr>
+            <?php endforeach; ?>
+        <?php else: ?>
+            <tr><td colspan="3">No subscribers found.</td></tr>
+        <?php endif; ?>
+    </table>
+</body>
+</html>

@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Request a Quote - Ali-Line</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    body { margin:0; font-family:Arial, sans-serif; background:#fff; }
+  </style>
+</head>
+<body>
+
+<!-- Header placeholder -->
+<div id="header-placeholder"></div>
+
+<section style="padding:48px 20px; background:#fff;">
+  <div style="max-width:1000px; margin:0 auto;">
+    <h1 style="text-align:center; color:#0A2D61; font-size:clamp(1.6rem,4vw,2rem); margin-bottom:8px;">Request a Quote</h1>
+    <p style="text-align:center; color:#555; max-width:900px; margin:0 auto 24px;">
+      Complete the form below and we'll get back to you with a detailed quote. Your selected products are prefilled from your quote list (you can edit/remove items).
+    </p>
+
+    <div style="display:grid; gap:24px; grid-template-columns: 1fr;">
+
+      <!-- Quote items -->
+      <div style="background:#f9fafb; padding:16px; border-radius:10px; box-shadow:0 6px 18px rgba(0,0,0,0.04);">
+        <h2 style="margin:0 0 12px; font-size:1.1rem; color:#222;">Items in Your Quote</h2>
+        <div id="quoteItems" style="min-height:60px;"></div>
+        <div style="margin-top:12px; display:flex; justify-content:space-between; align-items:center;">
+          <div>Total estimate: <strong>$<span id="quoteTotal">0.00</span></strong></div>
+          <button id="clearQuoteBtn" style="padding:8px 12px; background:#fff; border:1px solid #ddd; border-radius:6px; cursor:pointer;">Clear Items</button>
+        </div>
+      </div>
+
+      <!-- Form -->
+      <div style="background:#fff; padding:16px; border-radius:10px; box-shadow:0 6px 18px rgba(0,0,0,0.04);">
+        <h2 style="margin-top:0; font-size:1.1rem; color:#222;">Your Details</h2>
+        <form id="quoteForm" action="send-quote.php" method="post" enctype="multipart/form-data" style="display:grid; gap:12px;">
+          <input type="text" name="name" id="q_name" placeholder="Full name" required style="padding:10px; border:1px solid #ddd; border-radius:6px;">
+          <input type="email" name="email" id="q_email" placeholder="Email" required style="padding:10px; border:1px solid #ddd; border-radius:6px;">
+          <input type="tel" name="phone" id="q_phone" placeholder="Phone" required style="padding:10px; border:1px solid #ddd; border-radius:6px;">
+          <input type="text" name="company" id="q_company" placeholder="Company (optional)" style="padding:10px; border:1px solid #ddd; border-radius:6px;">
+          <select name="project_type" id="q_type" style="padding:10px; border:1px solid #ddd; border-radius:6px;">
+            <option value="">Project Type (Builder / Homeowner / Architect)</option>
+            <option value="Builder">Builder</option>
+            <option value="Homeowner">Homeowner</option>
+            <option value="Architect">Architect</option>
+            <option value="Other">Other</option>
+          </select>
+          <input type="text" name="address" id="q_address" placeholder="Project address (optional)" style="padding:10px; border:1px solid #ddd; border-radius:6px;">
+          <input type="text" name="metres" id="q_metres" placeholder="Orders or metres required (optional)" style="padding:10px; border:1px solid #ddd; border-radius:6px;">
+          <textarea name="message" id="q_message" placeholder="Project details / notes" rows="4" style="padding:10px; border:1px solid #ddd; border-radius:6px;"></textarea>
+
+          <label style="font-size:0.9rem; color:#555;">Attach drawings or photos (optional)</label>
+          <input type="file" name="attachment" id="q_file" accept=".pdf,image/*" style="padding:6px;">
+
+          <input type="hidden" name="quote_payload" id="quote_payload" value="[]">
+
+          <div style="display:flex; gap:10px; flex-wrap:wrap;">
+            <button type="submit" style="padding:12px 18px; background:#002b5c; color:#fff; border-radius:6px; border:0; font-weight:700; cursor:pointer;">Send Quote Request</button>
+            <a href="contact.html" style="padding:12px 18px; background:transparent; border:2px solid #002b5c; border-radius:6px; color:#002b5c; display:inline-block; text-decoration:none;">Contact Us</a>
+          </div>
+        </form>
+        <p style="font-size:0.9rem; color:#666; margin-top:12px;">We will respond within 1–2 business days. If you need immediate assistance, call <a href="tel:+61452564379" style="color:#002b5c;">1300 254 546</a> or use WhatsApp.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer placeholder -->
+<div id="footer-placeholder"></div>
+
+<!-- WhatsApp Button -->
+<a href="https://wa.me/61452564379" target="_blank" rel="noopener" style="position:fixed; right:20px; bottom:30px; width:60px; height:44px; background:#25D366; display:flex; align-items:center; justify-content:center; color:#fff; border-radius:6px; box-shadow:0 6px 18px rgba(0,0,0,0.15); z-index:999;">
+  <img src="images/whatsapp-icon.png" alt="WhatsApp" style="width:28px; height:28px;">
+</a>
+
+<!-- Scroll to Top -->
+<button onclick="scrollToTop()" id="scrollBtn" style="position:fixed; bottom:30px; left:20px; z-index:999; display:none; background-color:#002b5c; color:white; border:none; padding:10px 12px; cursor:pointer; font-size:18px; box-shadow:0 4px 6px rgba(0,0,0,0.3); transition:background 0.3s; border-radius:6px;">↑</button>
+
+<script>
+  // Load header and footer
+  async function loadHeaderFooter() {
+    try {
+      const [headerRes, footerRes] = await Promise.all([
+        fetch("inc/header.html"),
+        fetch("inc/footer.html")
+      ]);
+      const headerHtml = await headerRes.text();
+      const footerHtml = await footerRes.text();
+      document.getElementById("header-placeholder").innerHTML = headerHtml;
+      document.getElementById("footer-placeholder").innerHTML = footerHtml;
+
+      // Reattach hamburger menu JS after header loads
+      const script = document.createElement("script");
+      script.textContent = `
+        const menuToggle = document.getElementById('menu-toggle');
+        const mainNav = document.getElementById('main-nav');
+        if (menuToggle && mainNav) {
+          menuToggle.addEventListener('click', () => mainNav.classList.toggle('active'));
+        }
+      `;
+      document.body.appendChild(script);
+    } catch (e) {
+      console.error("Header/Footer load failed:", e);
+    }
+  }
+  loadHeaderFooter();
+
+  // Quote logic
+  const cartKey = 'aliLineQuoteItems';
+  function loadCart() {
+    try { return JSON.parse(localStorage.getItem(cartKey)) || []; } catch(e) { return []; }
+  }
+  function saveCart(cart) { localStorage.setItem(cartKey, JSON.stringify(cart)); renderQuoteItems(); }
+
+  function renderQuoteItems() {
+    const cont = document.getElementById('quoteItems');
+    const cart = loadCart();
+    cont.innerHTML = '';
+    if (cart.length === 0) {
+      cont.innerHTML = '<div style="padding:12px; color:#666;">No items in your quote. Go to the <a href="shop.html" style="color:#002b5c;">Shop</a> to add products.</div>';
+      document.getElementById('quoteTotal').textContent = '0.00';
+      document.getElementById('quote_payload').value = JSON.stringify([]);
+      return;
+    }
+    let total = 0;
+    cart.forEach((it, idx) => {
+      const row = document.createElement('div');
+      row.style.display = 'flex';
+      row.style.justifyContent = 'space-between';
+      row.style.alignItems = 'center';
+      row.style.padding = '8px 0';
+      row.style.borderBottom = '1px solid #eee';
+      row.innerHTML = `
+        <div style="flex:1;">
+          <div style="font-weight:700; color:#222;">${escapeHtml(it.name)}</div>
+          <div style="font-size:0.9rem; color:#666;">$${it.price} × 
+            <input type="number" value="${it.qty}" min="1" data-idx="${idx}" class="itm-qty" style="width:60px; padding:6px; border:1px solid #ddd; border-radius:4px;">
+          </div>
+        </div>
+        <div style="text-align:right;">
+          <div style="font-weight:700;">$${(it.price * it.qty).toFixed(2)}</div>
+          <button data-idx="${idx}" class="remove-quote" style="background:transparent; border:0; color:#c33; cursor:pointer; margin-top:6px;">Remove</button>
+        </div>
+      `;
+      cont.appendChild(row);
+      total += it.price * it.qty;
+    });
+    document.getElementById('quoteTotal').textContent = total.toFixed(2);
+    document.getElementById('quote_payload').value = JSON.stringify(cart);
+
+    // Events
+    cont.querySelectorAll('.remove-quote').forEach(btn => {
+      btn.addEventListener('click', e => {
+        const idx = Number(e.currentTarget.getAttribute('data-idx'));
+        const cart = loadCart(); cart.splice(idx,1); saveCart(cart);
+      });
+    });
+    cont.querySelectorAll('.itm-qty').forEach(input => {
+      input.addEventListener('change', e => {
+        let v = Number(e.currentTarget.value); if (!v || v < 1) v = 1;
+        const idx = Number(e.currentTarget.getAttribute('data-idx'));
+        const cart = loadCart(); cart[idx].qty = v; saveCart(cart);
+      });
+    });
+  }
+
+  document.getElementById('clearQuoteBtn').addEventListener('click', ()=> {
+    if (!confirm('Clear all items from quote?')) return;
+    saveCart([]);
+  });
+
+  document.getElementById('quoteForm').addEventListener('submit', function(e){
+    const cart = loadCart();
+    if (cart.length === 0 && document.getElementById('q_metres').value.trim() === '') {
+      e.preventDefault();
+      alert('Please add at least one product to your quote or enter metres required.');
+      return false;
+    }
+    document.getElementById('quote_payload').value = JSON.stringify(cart);
+  });
+
+  function escapeHtml(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+
+  // Scroll-to-top
+  window.onscroll = function(){ toggleScrollBtn(); };
+  function toggleScrollBtn(){
+    const b=document.getElementById('scrollBtn');
+    if (document.documentElement.scrollTop>200) b.style.display='block';
+    else b.style.display='none';
+  }
+  function scrollToTop(){ window.scrollTo({top:0, behavior:'smooth'}); }
+
+  // Init
+  renderQuoteItems();
+</script>
+</body>
+</html>

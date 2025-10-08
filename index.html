@@ -1,0 +1,819 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ali-Line | Premium Aluminium Ceilings</title>
+  <style>
+    /* Product Guide responsiveness */
+    .guide-grid {
+      max-width: 1000px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: center;
+    }
+    @media (max-width: 768px) {
+      .guide-grid {
+        grid-template-columns: 1fr; /* stack on mobile */
+        text-align: center;
+      }
+      .guide-grid div { text-align: center !important; }
+      .guide-grid form { margin: 0 auto; }
+    }
+
+    /* Recent Projects responsiveness */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    @media (max-width: 992px) {
+      .projects-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    @media (max-width: 600px) {
+      .projects-grid {
+        grid-template-columns: 1fr; /* single column on phones */
+      }
+    }
+
+    /* Testimonials responsiveness */
+    .reviews-grid {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+    }
+  </style>
+</head>
+
+<body style="margin: 0; font-family: Poppins, Arial, sans-serif;">
+
+  <!-- 👇 Header will be inserted here -->
+  <div id="header-placeholder"></div>
+
+  <!-- Hero Section -->
+  <section style="
+    background-image: url('images/hero-bg.jpg');
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    min-height: 90vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 1rem;
+    color: white;
+    font-family: Poppins, Arial, sans-serif;
+  ">
+    <div style="
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background-color: rgba(0,0,0,0.5);
+      z-index: 1;
+    "></div>
+
+    <div style="
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      max-width: 800px;
+    ">
+      <h1 style="
+        font-size: clamp(1.8rem, 5vw, 2.75rem);
+        font-weight: 700;
+        margin-bottom: 1rem;
+      ">
+        Transform Your Space with Premium Australian Ceilings
+      </h1>
+      <p style="
+        font-size: clamp(1rem, 3vw, 1.25rem);
+        margin-bottom: 2rem;
+        color: #f0f0f0;
+      ">
+        Elevate your home with our high-quality aluminium ceiling solutions. Proudly Australian-made for alfresco areas, entryways, and more.
+      </p>
+
+      <div style="
+        display: flex;
+        gap: 1rem;
+        flex-wrap: wrap;
+        justify-content: center;
+      ">
+        <a href="quote.html" style="
+          background-color: #ffffff;
+          color: #002b5c;
+          padding: 12px 24px;
+          border-radius: 4px;
+          font-weight: 600;
+          text-decoration: none;
+          font-size: 1rem;
+        ">Request a Quote</a>
+      </div>
+
+      <p style="margin-top: 2rem; font-size: 2rem; font-weight: 500;">
+        We’ve got you covered
+      </p>
+    </div>
+  </section>
+  <script>
+    // Load Header
+    fetch("inc/header.html")
+    .then(response => response.text())
+    .then(data => {
+      document.getElementById("header-placeholder").innerHTML = data;
+    
+      // Reattach JS for hamburger menu after header loads
+      const menuToggle = document.getElementById("menu-toggle");
+      const mainNav = document.getElementById("main-nav");
+      if (menuToggle && mainNav) {
+        menuToggle.addEventListener("click", () => {
+          mainNav.classList.toggle("active");
+        });
+      }
+    })
+    .catch(error => console.error("Error loading header:", error));
+    
+    // Load Footer
+    fetch("inc/footer.html")
+    .then(response => response.text())
+    .then(data => {
+      document.getElementById("footer-placeholder").innerHTML = data;
+    })
+    .catch(error => console.error("Error loading footer:", error));
+  </script>
+
+
+  <!-- Meet Ali-Line -->
+  <section style="padding:60px 20px; text-align:center; background:#fff;">
+    <h2 style="font-size:clamp(1.5rem,4vw,2.2rem); font-weight:700; margin-bottom:20px;">Meet Ali-Line</h2>
+    <p style="max-width:900px; margin:0 auto 15px; font-size:1rem; color:#444;">
+      Ali-line is an aluminium lining system that is easy and simple to use. With no need for glue or nails and prefinished so it is ready to go straight up. The unique design allows the lining boards to be removed without damage, giving easy access to services and utilities or to reposition a downlight. Boards can also be installed over insulation to achieve the required R code rating.
+    </p>
+    <p style="max-width:900px; margin:0 auto 25px; font-size:1rem; color:#444;">
+      Ali-Line is a long lasting, low maintenance, versatile product. Strong and durable because it is aluminium, it looks great and will last for generations. Whether it is for an alfresco ceiling, carport, feature panelling, or commercial application, inside or out, Ali-Line is your answer.
+    </p>
+  </section>
+
+  <!-- Featured Products -->
+  <section style="padding: 60px 20px; background-color: #f9fafc; text-align: center;">
+    <h2 style="font-size:clamp(1.5rem,4vw,2rem); font-weight:700; margin-bottom:10px;">Our Featured Products</h2>
+    <p style="font-size:1rem; color:#555; max-width:600px; margin:0 auto 40px;">
+      Discover our range of premium aluminium ceiling solutions, designed to enhance any space with style and durability.
+    </p>
+
+    <div style="
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      max-width: 1100px;
+      margin: 0 auto;
+    ">
+
+      <!-- CARD 1 -->
+      <div style="background:#fff; border-radius:8px; box-shadow:0 4px 10px rgba(0,0,0,0.08); overflow:hidden;">
+        <img src="images/feature1.jpg" alt="Classic White" style="width:100%; height:160px; object-fit:cover;">
+        <div style="padding:20px; text-align:left;">
+          <h3 style="font-size:1.125rem; font-weight:700; margin-bottom:10px;">Classic White</h3>
+          <p style="font-size:0.9rem; color:#555;">Our most popular finish, perfect for creating bright, open spaces.</p>
+        </div>
+      </div>
+
+      <!-- CARD 2 -->
+      <div style="background:#fff; border-radius:8px; box-shadow:0 4px 10px rgba(0,0,0,0.08); overflow:hidden;">
+        <img src="images/feature2.jpg" alt="Matte Black" style="width:100%; height:160px; object-fit:cover;">
+        <div style="padding:20px; text-align:left;">
+          <h3 style="font-size:1.125rem; font-weight:700; margin-bottom:10px;">Matte Black</h3>
+          <p style="font-size:0.9rem; color:#555;">Bold and sophisticated, ideal for creating statement ceilings.</p>
+        </div>
+      </div>
+
+      <!-- CARD 3 -->
+      <div style="background:#fff; border-radius:8px; box-shadow:0 4px 10px rgba(0,0,0,0.08); overflow:hidden;">
+        <img src="images/feature3.jpg" alt="Brushed Aluminium" style="width:100%; height:160px; object-fit:cover;">
+        <div style="padding:20px; text-align:left;">
+          <h3 style="font-size:1.125rem; font-weight:700; margin-bottom:10px;">Brushed Aluminium</h3>
+          <p style="font-size:0.9rem; color:#555;">A contemporary metallic finish that adds texture and depth.</p>
+        </div>
+      </div>
+
+      <!-- CARD 4 -->
+      <div style="background:#fff; border-radius:8px; box-shadow:0 4px 10px rgba(0,0,0,0.08); overflow:hidden;">
+        <img src="images/feature4.jpg" alt="Timber Look" style="width:100%; height:160px; object-fit:cover;">
+        <div style="padding:20px; text-align:left;">
+          <h3 style="font-size:1.125rem; font-weight:700; margin-bottom:10px;">Timber Look</h3>
+          <p style="font-size:0.9rem; color:#555;">The warmth of wood with the durability of aluminium.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+  
+  <style>
+    /* Base font and smooth rendering */
+    body {
+      margin: 0;
+      font-family: "Poppins", Arial, sans-serif;
+      line-height: 1.6;
+      color: #333;
+      background-color: #fff;
+    }
+
+    h2, h3 {
+      margin: 0 0 15px;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    /* Product Guide responsiveness */
+    .guide-grid {
+      max-width: 1000px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: center;
+    }
+    @media (max-width: 768px) {
+      .guide-grid {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+      .guide-grid div {
+        text-align: center !important;
+      }
+      .guide-grid form {
+        margin: 0 auto;
+      }
+    }
+
+    /* Recent Projects responsiveness */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    @media (max-width: 992px) {
+      .projects-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    @media (max-width: 600px) {
+      .projects-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Testimonials responsiveness */
+    .reviews-grid {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+    }
+  </style>
+
+  <!-- Section 2: Benefits -->
+  <section style="padding:60px 20px; background:#fff; text-align:center;">
+    <h2 style="font-size:clamp(1.5rem,4vw,2rem); font-weight:700; margin-bottom:20px;">Benefits & Features</h2>
+    <ul style="list-style:none; padding:0; max-width:600px; margin:0 auto; text-align:left; font-size:1rem; color:#444;">
+      <li>✔ Boards can be removed without damage</li>
+      <li>✔ Easy access to utilities and manholes</li>
+      <li>✔ Can be installed over insulation for energy efficiency</li>
+      <li>✔ Strong, durable, and low maintenance</li>
+    </ul>
+    <div style="margin-top:30px;">
+      <img src="images/product-closeup1.jpg" alt="Ali-Line Closeup" style="max-width:600px; width:100%; border-radius:8px; display:block; margin:auto;">
+    </div>
+  </section>
+
+  <!-- Section 3: Applications -->
+  <section style="padding:60px 20px; text-align:center; background:#f9fafc;">
+    <h2 style="font-size:clamp(1.5rem,4vw,2rem); margin-bottom:20px;">Applications in Action</h2>
+    <p style="max-width:800px; margin:0 auto 30px; font-size:1rem; color:#444;">From alfresco ceilings and garages to pergolas and commercial projects, Ali-Line adapts to a wide variety of uses.</p>
+    <div style="
+      display:grid; 
+      grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+      gap:20px; max-width:1000px; margin:0 auto;
+    ">
+      <img src="images/application11.jpg" alt="Ali-Line Application" style="width:100%; border-radius:8px;">
+    </div>
+  </section>
+
+  <!-- Section 4: Finishes -->
+  <section style="padding:60px 20px; background:#fff; text-align:center;">
+    <h2 style="font-size:clamp(1.5rem,4vw,2rem); margin-bottom:20px;">Finishes & Colours</h2>
+    <ul style="list-style:none; padding:0; margin:0 auto 30px; max-width:600px; text-align:left; color:#444; font-size:1rem;">
+      <li>• Mill Finish – natural aluminium</li>
+      <li>• Powder Coated – durable colour options</li>
+      <li>• Timber Grain – warmth of timber with aluminium resilience</li>
+      <li>• Anodised Metallics – premium, coastal ready</li>
+    </ul>
+    <p style="max-width:700px; margin:0 auto 30px;">All finishes are backed by warranty, colour consistency, and resistance to salt and dust.</p>
+    <img src="images/finishes1.jpg" alt="Ali-Line Finishes" style="max-width:600px; width:100%; border-radius:8px; display:block; margin:auto;">
+  </section>
+
+  <!-- Section 5: Closing Statement -->
+  <section style="padding:60px 20px; text-align:center; background:#f9fafc;">
+    <h2 style="font-size:clamp(1.5rem,4vw,2rem); margin-bottom:15px;">Ready to Start Your Project?</h2>
+    <p style="max-width:800px; margin:0 auto 20px; color:#444;">Save time, reduce waste, and achieve a flawless finish with Ali-Line.</p>
+    <a href="quote.html" style="
+      background:#002b5c;
+      color:#fff;
+      padding:12px 24px;
+      border-radius:6px;
+      text-decoration:none;
+      font-weight:600;
+      font-size:1rem;
+      display:inline-block;
+    ">Request a Quote</a>
+    <div style="margin-top:30px;">
+      <img src="images/lifestyle.jpg" alt="Lifestyle" style="max-width:800px; width:100%; border-radius:8px; display:block; margin:auto;">
+    </div>
+  </section>
+
+  <!-- Why Choose ALI-LINE -->
+  <section style="padding:60px 20px; background:#fff; text-align:center;">
+    <h2 style="font-size:clamp(1.5rem,4vw,2rem); font-weight:700; margin-bottom:10px;">Why Choose ALI-LINE?</h2>
+    <p style="font-size:1rem; color:#555; margin-bottom:40px;">
+    Our commitment to quality, innovation, and customer satisfaction sets us apart.
+    </p>
+    
+    <div style="display:flex; justify-content:center; gap:30px; flex-wrap:wrap;">
+    
+    <!-- Feature Box 1 -->
+    <div style="flex:1; min-width:250px; max-width:300px; background:#f9f9f9; padding:30px; border-radius:10px;">
+      <img src="images/australian-made.png" alt="Australian Made" 
+           style="width:80px; margin:0 auto 20px auto; display:block;">
+      <h3>Australian Made</h3>
+      <p>Proudly manufactured in Australia using premium materials and supporting local industry.</p>
+    </div>
+    
+    <!-- Feature Box 2 -->
+    <div style="flex:1; min-width:250px; max-width:300px; background:#f9f9f9; padding:30px; border-radius:10px;">
+      <img src="images/rocket-1206.png" alt="Quick Installation" 
+           style="width:80px; margin:0 auto 20px auto; display:block;">
+      <h3>Quick Installation</h3>
+      <p>Our innovative design allows for fast and easy installation, saving you time and money.</p>
+    </div>
+    
+    <!-- Feature Box 3 -->
+    <div style="flex:1; min-width:250px; max-width:300px; background:#f9f9f9; padding:30px; border-radius:10px;">
+      <img src="images/quality-3602.png" alt="Quality Guaranteed" 
+           style="width:80px; margin:0 auto 20px auto; display:block;">
+      <h3>Quality Guaranteed</h3>
+      <p>All our products come with a comprehensive warranty and are built to last in Australian conditions.</p>
+    </div>
+    </div>
+  </section>
+
+  <!-- Product Guide / Download Section -->
+  <section style="padding: 60px 20px; background-color: #f9fafb; text-align: center;">
+    <div class="guide-grid">
+      <div>
+        <img src="images/product-guide-image.jpg" alt="Product Guide" style="width: 100%; border-radius: 8px;">
+      </div>
+      <div style="text-align: left;">
+        <h2 style="font-size: 2rem; font-weight: 700; margin-bottom: 20px; color: #1a1a1a;">
+          Download Our Complete Product Guide
+        </h2>
+        <p style="font-size: 1rem; color: #555; margin-bottom: 30px;">
+          Get detailed information about our full range of products, including specifications, installation guides, and design inspiration.
+        </p>
+        <form action="download-guide.html" method="post" style="display: grid; gap: 15px; max-width: 400px;">
+          <input type="text" name="full_name" placeholder="Full Name" required style="padding: 10px; border: 1px solid #ccc; border-radius: 4px; font-size: 1rem;">
+          <input type="email" name="email" placeholder="Email Address" required style="padding: 10px; border: 1px solid #ccc; border-radius: 4px; font-size: 1rem;">
+          <button type="submit" style="background-color: #002b5c; color: #fff; padding: 12px 24px; border: none; border-radius: 4px; font-weight: 600; font-size: 1rem; cursor: pointer;" 
+            onmouseover="this.style.backgroundColor='#001e42'" 
+            onmouseout="this.style.backgroundColor='#002b5c'">
+            Download Now
+          </button>
+        </form>
+        <p style="margin-top: 20px; font-size: 0.875rem; color: #555; max-width: 400px;">
+          By downloading, you agree to receive occasional updates and offers from ALI-LINE. You can unsubscribe at any time.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Inline responsive CSS -->
+  <style>
+    /* small utility resets (kept minimal) */
+    html,body{margin:0;padding:0;font-family:Arial, sans-serif;background:#fff;color:#111}
+    img{max-width:100%;height:auto;display:block}
+    a{color:inherit}
+
+    /* Modal base (kept hidden by default) */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1200;
+      left: 0; top: 0;
+      width:100%; height:100%;
+      background: rgba(0,0,0,0.8);
+      justify-content:center;
+      align-items:center;
+      padding: 20px;
+      box-sizing: border-box;
+    }
+    .modal-inner {
+      max-width: 1100px;
+      width: 100%;
+      max-height: 90vh;
+      overflow: auto;
+      border-radius: 10px;
+      position: relative;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+    }
+    .modal-image {
+      max-width: 100%;
+      max-height: 85vh;
+      border-radius:8px;
+      box-shadow: 0 4px 18px rgba(0,0,0,0.4);
+      object-fit:contain;
+    }
+    .modal-close {
+      position:absolute;
+      top:12px;
+      right:12px;
+      font-size:28px;
+      color:#fff;
+      background:transparent;
+      border:none;
+      cursor:pointer;
+      padding:6px 8px;
+    }
+
+    /* Responsive helpers for grids */
+    .container-center { max-width:1200px; margin:0 auto; padding: 0 20px; box-sizing:border-box; }
+    .grid-3 { display:grid; grid-template-columns: repeat(3, 1fr); gap:20px; }
+    .grid-responsive { display:grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap:20px; }
+    @media (max-width: 992px) { .grid-3 { grid-template-columns: repeat(2,1fr); } }
+    @media (max-width: 600px) { .grid-3 { grid-template-columns: 1fr; } }
+
+    /* Scroll and WhatsApp buttons (square style like you wanted) */
+    #scrollBtn {
+      position:fixed;
+      bottom:30px;
+      right:90px;
+      z-index:1100;
+      display:none;
+      background-color:#002b5c;
+      color:white;
+      border:none;
+      width:48px;
+      height:48px;
+      cursor:pointer;
+      font-size:20px;
+      box-shadow:0 4px 6px rgba(0,0,0,0.3);
+      transition:background 0.3s ease;
+      border-radius:8px;
+      align-items:center;
+      justify-content:center;
+    }
+    #scrollBtn:hover{ background:#001e42; }
+
+    #whatsappBtn {
+      position:fixed;
+      bottom:30px;
+      right:30px;
+      z-index:1100;
+      display:none;
+      background-color:#25D366;
+      border:none;
+      width:48px;
+      height:48px;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      box-shadow:0 4px 6px rgba(0,0,0,0.3);
+      transition:transform 0.3s ease;
+      border-radius:8px;
+    }
+    #whatsappBtn img { width:24px; height:24px; }
+
+    @media (max-width: 480px) {
+      #scrollBtn { right:20px; bottom:80px; }
+      #whatsappBtn { right:20px; bottom:20px; }
+    }
+
+    /* Card overlay interaction (projects) */
+    .project-card {
+      position:relative;
+      height:250px;
+      background-size:cover;
+      background-position:center;
+      border-radius:8px;
+      overflow:hidden;
+      transition:transform 0.3s ease;
+      cursor:pointer;
+    }
+    .project-overlay {
+      position:absolute;
+      top:0; left:0; right:0; bottom:0;
+      background: rgba(0,123,255,0.5);
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      align-items:center;
+      text-align:center;
+      color:#fff;
+      opacity:0;
+      transition: opacity 0.3s ease, transform 0.3s ease;
+      padding:20px;
+      box-sizing:border-box;
+    }
+    .project-card:hover { transform: scale(1.02); }
+    .project-card:hover .project-overlay { opacity:1; }
+
+    /* Reviews grid tweaks */
+    .reviews-grid {
+      max-width:1200px;
+      margin:0 auto;
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap:20px;
+    }
+    @media (max-width: 992px) { .reviews-grid { grid-template-columns: repeat(2,1fr); } }
+    @media (max-width: 700px)  { .reviews-grid { grid-template-columns: 1fr; } }
+
+    /* simple button hover */
+    .cta-btn { background:#002b5c;color:#fff;padding:12px 24px;border-radius:6px;text-decoration:none;font-weight:600;display:inline-block; }
+    .cta-btn:hover{ background:#001e42 }
+
+  </style>
+
+  <!-- ===================== Recent Projects Section ===================== -->
+  <section style="padding:60px 20px; background-color:#ffffff; text-align:center;">
+    <div class="container-center">
+      <h2 style="font-size:1.8rem; font-weight:700; margin-bottom:20px; color:#1a1a1a;">Recent Projects</h2>
+      <p style="font-size:1rem;color:#555;margin-bottom:40px;">See how our products transform spaces across Australia.</p>
+
+      <!-- Projects grid: three columns on desktop, responsive below -->
+      <div class="grid-3" style="gap:20px; max-width:1200px; margin:0 auto;">
+
+        <!-- Project 1 -->
+        <div class="project-card" style="background-image:url('images/project1.jpg');"
+             onmouseover="this.querySelector('.project-overlay').style.opacity='1';"
+             onmouseout="this.querySelector('.project-overlay').style.opacity='0';">
+          <div class="project-overlay">
+            <h3 style="margin:0 0 10px; font-size:1.1rem;">Modern Alfresco Area</h3>
+            <p style="margin:0 0 20px; font-size:0.9rem;">Matte Black panels in Bondi Beach residence</p>
+            <a href="javascript:void(0)" onclick="openModalImage('images/project1.jpg')"
+               style="display:inline-block;padding:8px 12px;border:2px solid #fff;color:#fff;border-radius:4px;font-weight:bold;text-decoration:none;"
+               onmouseover="this.style.backgroundColor='#fff'; this.style.color='#007bff';"
+               onmouseout="this.style.backgroundColor='transparent'; this.style.color='#fff';">View Project</a>
+          </div>
+        </div>
+
+        <!-- Project 2 -->
+        <div class="project-card" style="background-image:url('images/project2.jpg');"
+             onmouseover="this.querySelector('.project-overlay').style.opacity='1';"
+             onmouseout="this.querySelector('.project-overlay').style.opacity='0';">
+          <div class="project-overlay">
+            <h3 style="margin:0 0 10px; font-size:1.1rem;">Outdoor Entertainment Deck</h3>
+            <p style="margin:0 0 20px; font-size:0.9rem;">Square Groove panels in Sydney Hills District</p>
+            <a href="javascript:void(0)" onclick="openModalImage('images/project2.jpg')"
+               style="display:inline-block;padding:8px 12px;border:2px solid #fff;color:#fff;border-radius:4px;font-weight:bold;text-decoration:none;"
+               onmouseover="this.style.backgroundColor='#fff'; this.style.color='#007bff';"
+               onmouseout="this.style.backgroundColor='transparent'; this.style.color='#fff';">View Project</a>
+          </div>
+        </div>
+
+        <!-- Project 3 -->
+        <div class="project-card" style="background-image:url('images/project3.jpg');"
+             onmouseover="this.querySelector('.project-overlay').style.opacity='1';"
+             onmouseout="this.querySelector('.project-overlay').style.opacity='0';">
+          <div class="project-overlay">
+            <h3 style="margin:0 0 10px; font-size:1.1rem;">Luxury Balcony Finish</h3>
+            <p style="margin:0 0 20px; font-size:0.9rem;">Edge-Cap detail at a Melbourne apartment</p>
+            <a href="javascript:void(0)" onclick="openModalImage('images/project3.jpg')"
+               style="display:inline-block;padding:8px 12px;border:2px solid #fff;color:#fff;border-radius:4px;font-weight:bold;text-decoration:none;"
+               onmouseover="this.style.backgroundColor='#fff'; this.style.color='#007bff';"
+               onmouseout="this.style.backgroundColor='transparent'; this.style.color='#fff';">View Project</a>
+          </div>
+        </div>
+
+        <!-- Project 4 -->
+        <div class="project-card" style="background-image:url('images/project4.jpg');"
+             onmouseover="this.querySelector('.project-overlay').style.opacity='1';"
+             onmouseout="this.querySelector('.project-overlay').style.opacity='0';">
+          <div class="project-overlay">
+            <h3 style="margin:0 0 10px; font-size:1.1rem;">Commercial Office Lobby</h3>
+            <p style="margin:0 0 20px; font-size:0.9rem;">Seamless paneling in Brisbane corporate tower</p>
+            <a href="javascript:void(0)" onclick="openModalImage('images/project4.jpg')"
+               style="display:inline-block;padding:8px 12px;border:2px solid #fff;color:#fff;border-radius:4px;font-weight:bold;text-decoration:none;"
+               onmouseover="this.style.backgroundColor='#fff'; this.style.color='#007bff';"
+               onmouseout="this.style.backgroundColor='transparent'; this.style.color='#fff';">View Project</a>
+          </div>
+        </div>
+
+        <!-- Project 5 -->
+        <div class="project-card" style="background-image:url('images/project5.jpg');"
+             onmouseover="this.querySelector('.project-overlay').style.opacity='1';"
+             onmouseout="this.querySelector('.project-overlay').style.opacity='0';">
+          <div class="project-overlay">
+            <h3 style="margin:0 0 10px; font-size:1.1rem;">Poolside Luxury</h3>
+            <p style="margin:0 0 20px; font-size:0.9rem;">Weather-resistant V-Groove finish in Gold Coast villa</p>
+            <a href="javascript:void(0)" onclick="openModalImage('images/project5.jpg')"
+               style="display:inline-block;padding:8px 12px;border:2px solid #fff;color:#fff;border-radius:4px;font-weight:bold;text-decoration:none;"
+               onmouseover="this.style.backgroundColor='#fff'; this.style.color='#007bff';"
+               onmouseout="this.style.backgroundColor='transparent'; this.style.color='#fff';">View Project</a>
+          </div>
+        </div>
+
+        <!-- Project 6 -->
+        <div class="project-card" style="background-image:url('images/project6.jpg');"
+             onmouseover="this.querySelector('.project-overlay').style.opacity='1';"
+             onmouseout="this.querySelector('.project-overlay').style.opacity='0';">
+          <div class="project-overlay">
+            <h3 style="margin:0 0 10px; font-size:1.1rem;">Coastal Home Interior</h3>
+            <p style="margin:0 0 20px; font-size:0.9rem;">Light Oak lining in Byron Bay retreat</p>
+            <a href="javascript:void(0)" onclick="openModalImage('images/project6.jpg')"
+               style="display:inline-block;padding:8px 12px;border:2px solid #fff;color:#fff;border-radius:4px;font-weight:bold;text-decoration:none;"
+               onmouseover="this.style.backgroundColor='#fff'; this.style.color='#007bff';"
+               onmouseout="this.style.backgroundColor='transparent'; this.style.color='#fff';">View Project</a>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Modal Popup for project images -->
+      <div id="projectModal" class="modal" aria-hidden="true">
+        <div class="modal-inner" role="dialog" aria-modal="true">
+          <button class="modal-close" aria-label="Close" onclick="closeModal()">×</button>
+          <img id="modalImage" class="modal-image" src="" alt="Project full view">
+        </div>
+      </div>
+
+      <!-- View All Projects Button -->
+      <div style="margin-top:40px; text-align:center;">
+        <a href="gallery.html" class="cta-btn" onmouseover="this.style.backgroundColor='#001e42'" onmouseout="this.style.backgroundColor='#002b5c'">View All Projects</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== Testimonials Section ===================== -->
+  <section style="padding:60px 20px; background-color:#f9fafb; text-align:center;">
+    <div class="container-center">
+      <h2 style="font-size:1.8rem; font-weight:700; margin-bottom:20px; color:#1a1a1a;">What Our Customers Say</h2>
+      <h4 style="font-size:1rem; font-weight:400; color:#555; margin-bottom:40px;">Don't just take our word for it – hear from our satisfied customers.</h4>
+
+      <div class="reviews-grid" style="max-width:1200px; margin:0 auto;">
+        <!-- Review 1 -->
+        <div style="background:#fff;border-radius:8px;padding:20px;text-align:left;box-shadow:0 4px 8px rgba(0,0,0,0.05);">
+          <div style="color:#FFD700;font-size:1.2rem;margin-bottom:10px;">★★★★★</div>
+          <p style="font-style:italic;color:#555;margin-bottom:15px;">"The ALI-LINE ceiling has completely transformed our alfresco area. The installation was quick and the finish is absolutely stunning."</p>
+          <strong style="color:#1a1a1a;">Michael Thompson</strong><br>
+          <span style="font-size:0.875rem;color:#777;">Homeowner, Perth</span>
+        </div>
+
+        <!-- Review 2 -->
+        <div style="background:#fff;border-radius:8px;padding:20px;text-align:left;box-shadow:0 4px 8px rgba(0,0,0,0.05);">
+          <div style="color:#FFD700;font-size:1.2rem;margin-bottom:10px;">★★★★★</div>
+          <p style="font-style:italic;color:#555;margin-bottom:15px;">"We used ALI-LINE panels for our café fit-out. Customers constantly compliment the sleek design, and maintenance has been a breeze."</p>
+          <strong style="color:#1a1a1a;">Samantha Lee</strong><br>
+          <span style="font-size:0.875rem;color:#777;">Business Owner, Perth</span>
+        </div>
+
+        <!-- Review 3 -->
+        <div style="background:#fff;border-radius:8px;padding:20px;text-align:left;box-shadow:0 4px 8px rgba(0,0,0,0.05);">
+          <div style="color:#FFD700;font-size:1.2rem;margin-bottom:10px;">★★★★★</div>
+          <p style="font-style:italic;color:#555;margin-bottom:15px;">"Fantastic service from start to finish. The team was professional, and the ceiling has added real value to our property."</p>
+          <strong style="color:#1a1a1a;">David Nguyen</strong><br>
+          <span style="font-size:0.875rem;color:#777;">Property Investor, Perth</span>
+        </div>
+
+        <!-- Review 4 -->
+        <div style="background:#fff;border-radius:8px;padding:20px;text-align:left;box-shadow:0 4px 8px rgba(0,0,0,0.05);">
+          <div style="color:#FFD700;font-size:1.2rem;margin-bottom:10px;">★★★★★</div>
+          <p style="font-style:italic;color:#555;margin-bottom:15px;">"I wanted something low-maintenance but stylish for our poolside area. ALI-LINE exceeded my expectations in every way."</p>
+          <strong style="color:#1a1a1a;">Emily Carter</strong><br>
+          <span style="font-size:0.875rem;color:#777;">Homeowner, Perth</span>
+        </div>
+
+        <!-- Review 5 -->
+        <div style="background:#fff;border-radius:8px;padding:20px;text-align:left;box-shadow:0 4px 8px rgba(0,0,0,0.05);">
+          <div style="color:#FFD700;font-size:1.2rem;margin-bottom:10px;">★★★★★</div>
+          <p style="font-style:italic;color:#555;margin-bottom:15px;">"The quality is top-notch, and the finish has given our office lobby a premium look. Clients always notice it when they walk in."</p>
+          <strong style="color:#1a1a1a;">James Wilson</strong><br>
+          <span style="font-size:0.875rem;color:#777;">Architect, Perth</span>
+        </div>
+
+        <!-- Review 6 -->
+        <div style="background:#fff;border-radius:8px;padding:20px;text-align:left;box-shadow:0 4px 8px rgba(0,0,0,0.05);">
+          <div style="color:#FFD700;font-size:1.2rem;margin-bottom:10px;">★★★★★</div>
+          <p style="font-style:italic;color:#555;margin-bottom:15px;">"From the design consultation to installation, everything was seamless. I couldn’t be happier with the results!"</p>
+          <strong style="color:#1a1a1a;">Olivia Martinez</strong><br>
+          <span style="font-size:0.875rem;color:#777;">Interior Designer, Perth</span>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== Scroll to Top Button & WhatsApp ===================== -->
+  <button id="scrollBtn" aria-label="Scroll to top" onclick="scrollToTop()">↑</button>
+
+  <a id="whatsappBtn" href="https://wa.me/61452564379" target="_blank" aria-label="WhatsApp Chat">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+  </a>
+
+  <!-- ===================== Scripts ===================== -->
+  <script>
+    /* Modal functions */
+    function openModalImage(src) {
+      const modal = document.getElementById('projectModal');
+      const img = document.getElementById('modalImage');
+      img.src = src;
+      modal.style.display = 'flex';
+      modal.setAttribute('aria-hidden', 'false');
+
+      // prevent leftover page scroll when modal open
+      document.documentElement.style.overflow = 'hidden';
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal() {
+      const modal = document.getElementById('projectModal');
+      modal.style.display = 'none';
+      modal.setAttribute('aria-hidden', 'true');
+      document.getElementById('modalImage').src = '';
+
+      // restore scroll
+      document.documentElement.style.overflow = '';
+      document.body.style.overflow = '';
+    }
+
+    // Close modal when clicking outside the inner content
+    document.getElementById('projectModal').addEventListener('click', function(e){
+      if (e.target === this) closeModal();
+    });
+
+    /* Scroll to top button toggle + action */
+    window.addEventListener('scroll', toggleScrollBtn);
+    function toggleScrollBtn() {
+      const btn = document.getElementById('scrollBtn');
+      if (window.scrollY > 200) btn.style.display = 'flex'; else btn.style.display = 'none';
+    }
+    function scrollToTop() {
+      window.scrollTo({ top:0, behavior:'smooth' });
+    }
+
+    /* WhatsApp show logic - visible after 30 seconds (change ms as needed) */
+    (function showWhatsAppAfterDelay(){
+      const storageKey = 'whatsappClosedV2';
+      // show both buttons after delay if not closed
+      const delayMs = 30000; // 30s
+      setTimeout(()=> {
+        if (!localStorage.getItem(storageKey)) {
+          const w = document.getElementById('whatsappBtn');
+          const s = document.getElementById('scrollBtn');
+          if (w) w.style.display = 'flex';
+          if (s) { /* scroll has own scroll listener; keep as-is */ }
+        }
+      }, delayMs);
+    })();
+
+    /* Accessibility: close modal with ESC */
+    document.addEventListener('keydown', function(e){
+      if (e.key === 'Escape') {
+        const modal = document.getElementById('projectModal');
+        if (modal && modal.style.display === 'flex') closeModal();
+      }
+    });
+
+    /* Fix: on page load ensure modal is hidden and no overlay residue */
+    window.addEventListener('load', function(){
+      // ensure modal hidden, remove overflow lock
+      const modal = document.getElementById('projectModal');
+      if (modal) {
+        modal.style.display = 'none';
+        modal.setAttribute('aria-hidden','true');
+      }
+      document.documentElement.style.overflow = '';
+      document.body.style.overflow = '';
+      // show scroll button state if user already scrolled
+      toggleScrollBtn();
+    });
+  </script>
+  <div id="footer-placeholder"></div>
+
+
+</body>
+</html>

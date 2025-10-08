@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blog | Ali-Line</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <div id="header-placeholder"></div>
+
+  <!-- ===== Blog Section ===== -->
+  <section style="padding: 60px 20px; font-family: Arial, sans-serif; max-width: 1200px; margin: auto;">
+    <h1 style="font-size: 2rem; font-weight: 700; text-align: center; color: #0A2D61; margin-bottom: 20px;">
+      Insights and Applications
+    </h1>
+    <p style="text-align: center; font-size: 1rem; color: #555; margin-bottom: 50px; max-width: 800px; margin-left: auto; margin-right: auto;">
+      Our blog showcases practical applications, case studies, and design trends to help builders, architects, and homeowners.
+    </p>
+
+    <div class="blog-layout" style="display: grid; grid-template-columns: 280px 1fr; gap: 30px; align-items: start;">
+
+      <!-- Sidebar -->
+      <aside style="background:#f9fafb; padding:20px; border-radius:8px; box-shadow:0 4px 8px rgba(0,0,0,0.05);">
+        <h3 style="font-size:1.2rem; font-weight:600; color:#0A2D61; margin-bottom:15px;">Filter by Category</h3>
+        <ul style="list-style:none; padding:0; margin:0; font-size:0.95rem; color:#333;">
+          <li style="margin-bottom:10px;"><a href="#" style="text-decoration:none; color:#0A2D61;">All Articles</a></li>
+          <li style="margin-bottom:10px;"><a href="#" style="text-decoration:none; color:#333;">Case Studies</a></li>
+          <li style="margin-bottom:10px;"><a href="#" style="text-decoration:none; color:#333;">Design Trends</a></li>
+          <li style="margin-bottom:10px;"><a href="#" style="text-decoration:none; color:#333;">Installation Tips</a></li>
+          <li style="margin-bottom:10px;"><a href="#" style="text-decoration:none; color:#333;">Product Insights</a></li>
+        </ul>
+      </aside>
+
+      <!-- Blog Grid -->
+      <div class="blog-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px;">
+        
+        <!-- Blog Card 1 -->
+        <div style="background:#fff; border-radius:8px; overflow:hidden; box-shadow:0 4px 8px rgba(0,0,0,0.1);">
+          <img src="images/blog1.jpg" alt="Custom Lengths" style="width:100%; height:180px; object-fit:cover;">
+          <div style="padding:20px;">
+            <h3 style="font-size:1.1rem; font-weight:600; color:#1a1a1a; margin-bottom:10px;">Why Custom Lengths Save Builders Time and Money</h3>
+            <p style="font-size:0.95rem; color:#555; margin-bottom:15px;">Discover how Ali-Line’s custom order system reduces on-site waste and accelerates project timelines.</p>
+            <a href="javascript:void(0)" onclick="openModal('modal1')" style="color:#0A2D61; font-weight:600; text-decoration:none;">Read More →</a>
+          </div>
+        </div>
+
+        <!-- Blog Card 2 -->
+        <div style="background:#fff; border-radius:8px; overflow:hidden; box-shadow:0 4px 8px rgba(0,0,0,0.1);">
+          <img src="images/blog2.jpg" alt="Coastal Estates" style="width:100%; height:180px; object-fit:cover;">
+          <div style="padding:20px;">
+            <h3 style="font-size:1.1rem; font-weight:600; color:#1a1a1a; margin-bottom:10px;">How Ali-Line Performs in Coastal Estates</h3>
+            <p style="font-size:0.95rem; color:#555; margin-bottom:15px;">Explore the durability of Ali-Line boards in challenging seaside environments.</p>
+            <a href="javascript:void(0)" onclick="openModal('modal2')" style="color:#0A2D61; font-weight:600; text-decoration:none;">Read More →</a>
+          </div>
+        </div>
+
+        <!-- Blog Card 3 -->
+        <div style="background:#fff; border-radius:8px; overflow:hidden; box-shadow:0 4px 8px rgba(0,0,0,0.1);">
+          <img src="images/blog3.jpg" alt="Design Trends" style="width:100%; height:180px; object-fit:cover;">
+          <div style="padding:20px;">
+            <h3 style="font-size:1.1rem; font-weight:600; color:#1a1a1a; margin-bottom:10px;">New Design Trends in Aluminium Lining</h3>
+            <p style="font-size:0.95rem; color:#555; margin-bottom:15px;">Stay ahead with the latest architectural lining designs and creative uses of aluminium.</p>
+            <a href="javascript:void(0)" onclick="openModal('modal3')" style="color:#0A2D61; font-weight:600; text-decoration:none;">Read More →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <div id="footer-placeholder"></div>
+
+  <!-- ===== Load Header and Footer Scripts ===== -->
+  <script>
+    // Load Header
+    fetch("inc/header.html")
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById("header-placeholder").innerHTML = data;
+
+        // Reattach JS for hamburger menu after header loads
+        const menuToggle = document.getElementById("menu-toggle");
+        const mainNav = document.getElementById("main-nav");
+        if (menuToggle && mainNav) {
+          menuToggle.addEventListener("click", () => {
+            mainNav.classList.toggle("active");
+          });
+        }
+      })
+      .catch(error => console.error("Error loading header:", error));
+
+    // Load Footer
+    fetch("inc/footer.html")
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById("footer-placeholder").innerHTML = data;
+      })
+      .catch(error => console.error("Error loading footer:", error));
+  </script>
+
+  <!-- ===== Modals with Full Blog Content ===== -->
+  <!-- Blog 1 -->
+  <div id="modal1" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('modal1')">&times;</span>
+      <h2>Why Custom Lengths Save Builders Time and Money</h2>
+      <p> One of the hidden costs in construction is the time and effort lost on adjustments, wastage, and labor inefficiencies. Traditional building materials often come in fixed sizes, forcing builders to cut, trim, or join them on-site. This not only slows down the workflow but also generates excess waste that needs to be disposed of. 
+      <br><br> Ali-Line solves this problem by offering 
+      <strong>custom lengths</strong>. 
+      Instead of working with generic pieces, builders can order boards tailored to the exact measurements they need. The benefits are clear: 
+      <ul> 
+      <li><strong>Time savings:</strong> Less time spent cutting and resizing means projects move faster.</li> 
+      <li><strong>Cost efficiency:</strong> Reduced waste means less money spent on excess material and disposal.</li> 
+      <li><strong>Cleaner sites:</strong> Fewer offcuts and scraps keep work areas organized and safe.</li> 
+      <li><strong>Higher precision:</strong> With exact lengths, builders can achieve smoother finishes and better quality.</li> 
+      </ul> 
+     
+      <br><br>Imagine a large housing project where every ceiling board must be trimmed. That adds days of extra labor. With Ali-Line’s system, builders simply install the ready-to-use boards, saving both time and resources. Over the course of multiple projects, the savings multiply—turning into a competitive edge for builders who embrace this smarter approach. 
+      <p> 
+    </div> 
+  </div>
+
+  <!-- Blog 2 -->
+  <div id="modal2" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('modal2')">&times;</span>
+      <h2>How Ali-Line Performs in Coastal Estates</h2>
+      <p> Coastal estates face some of the harshest environmental challenges—salt spray, humidity, and constant exposure to changing weather. Traditional lining materials often struggle in these conditions, leading to rust, warping, and early replacement costs. 
+      <br><br> Ali-Line is engineered to withstand these challenges. Its aluminium base resists corrosion, and the product is designed for longevity in seaside environments. Builders in coastal regions often need to choose between durability and style—but Ali-Line provides both. 
+      <br><br> Case studies show that homeowners in coastal estates appreciate not only the resilience of Ali-Line but also its low maintenance. Instead of frequent repainting or replacing degraded materials, Ali-Line offers peace of mind through strength and weather resistance. 
+      <br><br> 
+      <strong>Key advantages in coastal estates include:</strong> 
+      <ul> 
+      <li>-Superior corrosion resistance against salty air.</li> 
+      <li>-Durability in high-moisture environments.</li> 
+      <li>-Aesthetic appeal with sleek, modern finishes.</li> 
+      <li>-Reduced long-term maintenance costs.</li> 
+      
+      </ul> 
+      <br><br>
+      For coastal developers and homeowners, this makes Ali-Line not just a practical choice but also a financially sound one—ensuring that properties retain both their beauty and value over time. 
+      <p> 
+    </div> 
+  </div>
+
+  <!-- Blog 3 -->
+  <div id="modal3" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('modal3')">&times;</span>
+      <h2>New Design Trends in Aluminium Lining</h2>
+      <p> Aluminium lining is no longer just about function—it has become a centerpiece of design in modern architecture. As homeowners and architects look for ways to blend durability with beauty, Ali-Line is emerging as a go-to solution. 
+      <br><br> 
+      <strong>1. Minimalist Aesthetics:</strong> 
+      Clean lines and seamless finishes are highly popular. Ali-Line allows for sleek ceiling and wall applications that bring sophistication to modern homes. 
+      <br><br> 
+      <strong>2. Indoor-Outdoor Flow:</strong> 
+      More designs are emphasizing the continuity between indoor living areas and outdoor patios. Ali-Line’s durability makes it suitable for both spaces, enabling seamless transitions. 
+      <br><br> 
+      <strong>3. Bold Accents:</strong> 
+      Beyond neutral tones, designers are experimenting with bold colors and metallic finishes. Ali-Line supports this flexibility, helping homes achieve distinctive styles. 
+      <br><br> 
+      <strong>4. Sustainability:</strong> 
+      With increasing awareness of eco-friendly building, aluminium stands out as a recyclable and long-lasting choice. Ali-Line reduces the need for frequent replacements, aligning with sustainable design goals. 
+      <br><br>These trends show that aluminium lining is more than a practical solution—it’s shaping the way buildings look and feel in the 21st century. With Ali-Line, homeowners, builders, and architects can tap into a material that adapts to evolving design demands while delivering lasting performance. 
+      </p> 
+    </div> 
+  </div>
+
+  <!-- ===== Modal Styles ===== -->
+  <style>
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0; 
+      top: 0;
+      width: 100%; 
+      height: 100%;
+      background: rgba(0,0,0,0.6);
+      padding: 10px;
+      box-sizing: border-box;
+    }
+    .modal-content {
+      background: #fff;
+      margin: 5% auto;
+      padding: 20px;
+      border-radius: 8px;
+      max-width: 800px;
+      max-height: 80vh;
+      overflow-y: auto;
+      box-sizing: border-box;
+    }
+    .close {
+      float: right;
+      font-size: 24px;
+      cursor: pointer;
+      color: #333;
+    }
+    @media (max-width: 768px) {
+      .modal-content {
+        margin: 10% auto;
+        width: 90%;
+        max-width: 90%;
+        max-height: 85vh;
+        padding: 15px;
+      }
+      .close {
+        font-size: 28px;
+      }
+    }
+
+    /* Layout Responsiveness */
+    .blog-layout {
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      gap: 30px;
+      align-items: start;
+    }
+    @media (max-width: 768px) {
+      .blog-layout {
+        grid-template-columns: 1fr;
+      }
+      .blog-layout aside {
+        order: 1;
+        margin-bottom: 20px;
+      }
+      .blog-layout .blog-grid {
+        order: 2;
+      }
+    }
+  </style>
+
+  <!-- ===== Modal Script ===== -->
+  <script>
+    function openModal(id) {
+      document.getElementById(id).style.display = "block";
+    }
+    function closeModal(id) {
+      document.getElementById(id).style.display = "none";
+    }
+  </script>
+
+</body>
+</html>

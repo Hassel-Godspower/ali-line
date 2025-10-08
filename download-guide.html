@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Download Guide - Ali-Line</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body style="margin:0; font-family:Arial, sans-serif; background-color:#f9fafb;">
+
+  <!-- Header Placeholder -->
+  <div id="header-placeholder"></div>
+
+  <main style="padding:80px 20px; min-height:70vh; display:flex; align-items:center; justify-content:center;">
+    <div style="background:#fff; max-width:700px; width:100%; padding:50px; border-radius:12px; text-align:center; box-shadow:0 6px 16px rgba(0,0,0,0.08);">
+      
+      <h1 id="thank-you-message" style="font-size:2.2rem; font-weight:700; color:#002b5c; margin-bottom:20px;">
+        Thank You!
+      </h1>
+
+      <p style="font-size:1.1rem; color:#555; margin-bottom:30px;">
+        Your product guide is ready to download. It should begin automatically in a moment.
+      </p>
+
+      <a id="download-link" 
+         href="files/ali-line-product-guide.pdf" 
+         download="ALI-LINE-Product-Guide.pdf"
+         style="display:inline-block; padding:14px 32px; font-size:1rem; font-weight:bold; color:#fff; background:#002b5c; border-radius:6px; text-decoration:none; transition:0.3s;">
+        📥 Download Now
+      </a>
+
+      <p style="margin-top:20px; font-size:0.9rem; color:#777;">
+        If the download doesn’t start automatically, click the button above.
+      </p>
+    </div>
+  </main>
+
+  <!-- Footer Placeholder -->
+  <div id="footer-placeholder"></div>
+
+  <!-- Header & Footer Loader -->
+  <script>
+    // Load Header
+    fetch("inc/header.html")
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById("header-placeholder").innerHTML = data;
+
+        // Hamburger Menu Logic
+        const menuToggle = document.getElementById("menu-toggle");
+        const mainNav = document.getElementById("main-nav");
+        if (menuToggle && mainNav) {
+          menuToggle.addEventListener("click", () => {
+            mainNav.classList.toggle("active");
+          });
+        }
+      })
+      .catch(error => console.error("Error loading header:", error));
+
+    // Load Footer
+    fetch("inc/footer.html")
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById("footer-placeholder").innerHTML = data;
+      })
+      .catch(error => console.error("Error loading footer:", error));
+  </script>
+
+  <!-- Download Logic -->
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      // Retrieve saved name/email from localStorage (set on the form page)
+      const fullName = localStorage.getItem("full_name") || "there";
+      const email = localStorage.getItem("email");
+
+      // Update thank-you message
+      document.getElementById("thank-you-message").textContent = `Thank You, ${fullName}!`;
+
+      // Auto-download after delay
+      setTimeout(() => {
+        const link = document.getElementById("download-link");
+        if (link) {
+          link.click();
+        }
+      }, 1500);
+    });
+  </script>
+
+</body>
+</html>

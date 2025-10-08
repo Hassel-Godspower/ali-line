@@ -1,0 +1,13 @@
+<?php
+$host = "us-east.connect.psdb.cloud";  // From PlanetScale
+$username = "your_user";               // From PlanetScale
+$password = "your_password";           // From PlanetScale
+$dbname = "ali_line";                  // The DB name you created
+
+$conn = new mysqli($host, $username, $password, $dbname);
+
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+?>

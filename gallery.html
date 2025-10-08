@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Gallery - Ali-Line</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      font-family: "Poppins", Arial, sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
+      color: #1a1a1a;
+      margin: 0;
+      background: #f8f8f8;
+    }
+
+    section {
+      padding: 50px 20px;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: clamp(1.6rem, 4vw, 2.2rem);
+      margin-bottom: 15px;
+      color: #0A2D61;
+    }
+
+    p {
+      text-align: center;
+      font-size: 1rem;
+      max-width: 720px;
+      margin: 0 auto 40px;
+      color: #555;
+      line-height: 1.6;
+    }
+
+    /* Gallery Grid */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .gallery-item {
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.06);
+      overflow: hidden;
+      cursor: pointer;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .gallery-item:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* Lightbox */
+    #lightbox {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.85);
+      justify-content: center;
+      align-items: center;
+      z-index: 999;
+    }
+
+    #lightbox img {
+      max-width: 90%;
+      max-height: 90%;
+      border-radius: 8px;
+      box-shadow: 0 6px 25px rgba(0,0,0,0.6);
+      transition: transform 0.3s ease;
+    }
+
+    #lightbox img:hover {
+      transform: scale(1.02);
+    }
+
+    /* Responsive */
+    @media (max-width: 600px) {
+      section {
+        padding: 30px 15px;
+      }
+      .gallery-item img {
+        height: 180px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header placeholder -->
+  <div id="header-placeholder"></div>
+
+  <section>
+    <h1>Ali-Line Gallery</h1>
+    <p>
+      Explore our gallery of projects, product features, and installations that highlight Ali-Line’s 
+      quality, versatility, and modern craftsmanship.
+    </p>
+
+    <!-- Gallery Grid -->
+    <div class="gallery-grid">
+      <!-- Featured Projects -->
+      <div class="gallery-item"><img src="images/project1.jpg" alt="Project 1" onclick="openLightbox(this)"></div>
+      <div class="gallery-item"><img src="images/project2.jpg" alt="Project 2" onclick="openLightbox(this)"></div>
+      <div class="gallery-item"><img src="images/project3.jpg" alt="Project 3" onclick="openLightbox(this)"></div>
+      <div class="gallery-item"><img src="images/project4.jpg" alt="Project 4" onclick="openLightbox(this)"></div>
+      <div class="gallery-item"><img src="images/project5.jpg" alt="Project 5" onclick="openLightbox(this)"></div>
+      <div class="gallery-item"><img src="images/project6.jpg" alt="Project 6" onclick="openLightbox(this)"></div>
+
+      <!-- Additional Images -->
+      <div class="gallery-item"><img src="images/factory.jpg" alt="Factory Production" onclick="openLightbox(this)"></div>
+      <div class="gallery-item"><img src="images/installation.jpg" alt="Installation Team" onclick="openLightbox(this)"></div>
+      <div class="gallery-item"><img src="images/gallery3.jpg" alt="Western Australia Map" onclick="openLightbox(this)"></div>
+      <div class="gallery-item"><img src="images/gallery4.jpg" alt="Homeshow Display" onclick="openLightbox(this)"></div>
+      <div class="gallery-item"><img src="images/gallery5.jpg" alt="Ali-Line Booth" onclick="openLightbox(this)"></div>
+      <div class="gallery-item"><img src="images/gallery6.jpg" alt="Client Showcase" onclick="openLightbox(this)"></div>
+    </div>
+  </section>
+
+  <!-- Lightbox -->
+  <div id="lightbox" onclick="closeLightbox()">
+    <img id="lightbox-img" src="" alt="Gallery Image">
+  </div>
+
+  <!-- Footer placeholder -->
+  <div id="footer-placeholder"></div>
+
+  <script>
+    // Lightbox logic
+    function openLightbox(img) {
+      const lightbox = document.getElementById('lightbox');
+      const lightboxImg = document.getElementById('lightbox-img');
+      lightboxImg.src = img.src;
+      lightbox.style.display = 'flex';
+    }
+
+    function closeLightbox() {
+      document.getElementById('lightbox').style.display = 'none';
+    }
+
+    // Load header & footer dynamically
+    async function loadPartials() {
+      try {
+        const header = await fetch("inc/header.html").then(r => r.text());
+        const footer = await fetch("inc/footer.html").then(r => r.text());
+        document.getElementById("header-placeholder").innerHTML = header;
+        document.getElementById("footer-placeholder").innerHTML = footer;
+
+        // reattach mobile nav JS after header load
+        const menuToggle = document.getElementById('menu-toggle');
+        const mainNav = document.getElementById('main-nav');
+        if (menuToggle && mainNav) {
+          menuToggle.addEventListener('click', () => {
+            mainNav.classList.toggle('active');
+          });
+        }
+      } catch (err) {
+        console.error("Error loading header/footer:", err);
+      }
+    }
+    loadPartials();
+  </script>
+
+</body>
+</html>

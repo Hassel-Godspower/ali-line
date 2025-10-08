@@ -1,0 +1,23 @@
+<?php
+session_start();
+require 'inc/db.php';
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $username = trim($_POST['username']);
+    $email    = trim($_POST['email']);
+    $password = password_hash($_POST['password'], PASSWORD_BCRYPT);
+
+    $stmt = $conn->prepare("INSERT INTO users (username, email, password) VALUES (?, ?, ?)");
+    $stmt->bind_param("sss", $username, $email, $password);
+
+    if ($stmt->execute()) {
+        $_SESSION['message'] = "Registration successful. Please login.";
+        header("Location: login.php");
+    } else {
+        $_SESSION['error'] = "Error: " . $stmt->error;
+        header("Location: register.php");
+    }
+    $stmt->close();
+}
+$conn->close();
+?>

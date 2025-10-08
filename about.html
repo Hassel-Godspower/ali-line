@@ -1,0 +1,48 @@
+<div id="header-placeholder"></div>
+
+<section style="padding:60px 20px; max-width:1200px; margin:auto; line-height:1.6;">
+  <h1 style="color:#002b5c; font-size:2rem; margin-bottom:20px;">
+    Australian Made Innovation Since 2012
+  </h1>
+  <p style="font-size:1.1rem; margin-bottom:40px;">
+    Since 2012, Ali-Line has been a trusted solution in the Australian construction and housing market. 
+    What began as a behind the scenes material has grown into a recognised standalone product, 
+    meeting the needs of a changing industry. Our focus is durability, cost savings, and design flexibility, 
+    making Ali-Line the preferred choice for builders and architects across Australia.
+  </p>
+
+  <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:20px;">
+    <img src="images/factory.jpg" alt="Factory production" style="width:100%; border-radius:8px;">
+    <img src="images/installation.jpg" alt="Installation team" style="width:100%; border-radius:8px;">
+    <img src="images/wa-map.jpg" alt="Western Australia Map" style="width:100%; border-radius:8px;">
+    <img src="images/tim-giles.jpg" alt="Tim Giles at Homeshow" style="width:100%; border-radius:8px;">
+  </div>
+</section>
+<script>
+    // Load Header
+    fetch("inc/header.html")
+    .then(response => response.text())
+    .then(data => {
+      document.getElementById("header-placeholder").innerHTML = data;
+    
+      // Reattach JS for hamburger menu after header loads
+      const menuToggle = document.getElementById("menu-toggle");
+      const mainNav = document.getElementById("main-nav");
+      if (menuToggle && mainNav) {
+        menuToggle.addEventListener("click", () => {
+          mainNav.classList.toggle("active");
+        });
+      }
+    })
+    .catch(error => console.error("Error loading header:", error));
+    
+    // Load Footer
+    fetch("inc/footer.html")
+    .then(response => response.text())
+    .then(data => {
+      document.getElementById("footer-placeholder").innerHTML = data;
+    })
+    .catch(error => console.error("Error loading footer:", error));
+</script>
+
+<div id="footer-placeholder"></div>

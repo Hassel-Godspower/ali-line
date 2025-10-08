@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Contact - Ali-Line</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body style="margin:0; font-family:Arial, sans-serif; background:#f8f8f8;">
+
+  <!-- Header Placeholder -->
+  <div id="header-placeholder"></div>
+
+  <!-- Contact Section -->
+  <section style="padding:50px 20px;">
+    <h1 style="text-align:center; font-size:32px; margin-bottom:20px; color:#0A2D61;">
+      Start Your Project with Ali-Line
+    </h1>
+
+    <!-- Contact Details -->
+    <div style="max-width:900px; margin:0 auto 40px; background:#fff; border-radius:8px; padding:30px; box-shadow:0 4px 10px rgba(0,0,0,0.05);">
+      <h2 style="font-size:22px; margin-bottom:15px; color:#444;">Contact Details</h2>
+      <p style="margin-bottom:10px; font-size:16px; color:#555;"><strong>Tim Giles</strong> – Owner</p>
+      <p style="margin-bottom:10px; font-size:16px; color:#555;">Email: 
+        <a href="mailto:info@ali-line.com.au" style="color:#002b5c;">info@ali-line.com.au</a>
+      </p>
+      <p style="margin-bottom:10px; font-size:16px; color:#555;">Phone: 
+        <a href="tel:0452564379" style="color:#002b5c;">0452 564 379</a>
+      </p>
+      <p style="margin-bottom:10px; font-size:16px; color:#555;">WhatsApp: 
+        <a href="https://wa.me/61452564379" style="color:#25D366;">+61 452 564 379</a>
+      </p>
+      <p style="margin-bottom:0; font-size:16px; color:#555;">Website: 
+        <a href="https://www.ali-line.com.au" target="_blank" style="color:#002b5c;">www.ali-line.com.au</a>
+      </p>
+    </div>
+
+    <!-- Contact Form -->
+    <div style="max-width:900px; margin:0 auto 40px; background:#fff; border-radius:8px; padding:30px; box-shadow:0 4px 10px rgba(0,0,0,0.05);">
+      <h2 style="font-size:22px; margin-bottom:20px; color:#444;">Request a Quote</h2>
+      <form action="send-contact.php" method="POST" style="display:grid; gap:15px;">
+        <input type="text" name="name" placeholder="Your Name" required 
+               style="padding:12px; border:1px solid #ccc; border-radius:4px; font-size:16px;">
+        <input type="email" name="email" placeholder="Your Email" required 
+               style="padding:12px; border:1px solid #ccc; border-radius:4px; font-size:16px;">
+        <input type="tel" name="phone" placeholder="Your Phone" required 
+               style="padding:12px; border:1px solid #ccc; border-radius:4px; font-size:16px;">
+        <select name="project_type" required 
+                style="padding:12px; border:1px solid #ccc; border-radius:4px; font-size:16px;">
+          <option value="">Select Project Type</option>
+          <option value="builder">Builder</option>
+          <option value="homeowner">Homeowner</option>
+          <option value="architect">Architect</option>
+        </select>
+        <input type="text" name="orders" placeholder="Orders or metres required" 
+               style="padding:12px; border:1px solid #ccc; border-radius:4px; font-size:16px;">
+        <button type="submit" 
+                style="padding:14px; background:#e6c89f; color:#000; border:none; border-radius:4px; font-size:16px; font-weight:bold; cursor:pointer;">
+          Request a Quote
+        </button>
+      </form>
+    </div>
+
+    <!-- Map Section -->
+    <div style="max-width:900px; margin:0 auto;">
+      <h2 style="font-size:22px; margin-bottom:15px; color:#444;">Service Coverage</h2>
+      <div style="width:100%; height:300px; border-radius:8px; overflow:hidden; box-shadow:0 4px 10px rgba(0,0,0,0.05);">
+        <iframe 
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4886190.566994515!2d118.1260468!3d-25.3444277!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2a2f0a7d02e0f3db%3A0x504f0b535df4c60!2sWestern%20Australia!5e0!3m2!1sen!2sau!4v1695118593823!5m2!1sen!2sau" 
+          width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy">
+        </iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer Placeholder -->
+  <div id="footer-placeholder"></div>
+
+  <!-- Header & Footer Loader -->
+  <script>
+    // Load Header
+    fetch("inc/header.html")
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById("header-placeholder").innerHTML = data;
+
+        // Hamburger Menu Logic
+        const menuToggle = document.getElementById("menu-toggle");
+        const mainNav = document.getElementById("main-nav");
+        if (menuToggle && mainNav) {
+          menuToggle.addEventListener("click", () => {
+            mainNav.classList.toggle("active");
+          });
+        }
+      })
+      .catch(error => console.error("Error loading header:", error));
+
+    // Load Footer
+    fetch("inc/footer.html")
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById("footer-placeholder").innerHTML = data;
+      })
+      .catch(error => console.error("Error loading footer:", error));
+  </script>
+
+</body>
+</html>

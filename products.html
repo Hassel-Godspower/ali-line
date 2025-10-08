@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Products - Ali-Line</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body style="margin:0; font-family:Arial, sans-serif; background:#f8f8f8;">
+
+  <!-- Header Placeholder -->
+  <div id="header-placeholder"></div>
+
+  <!-- Products Section -->
+  <section style="padding:50px 20px;">
+    <h1 style="text-align:center; font-size:32px; margin-bottom:20px; color:#0A2D61;">
+      Profiles Designed for Every Application
+    </h1>
+
+    <p style="text-align:center; font-size:18px; max-width:800px; margin:0 auto 40px; color:#555; line-height:1.6;">
+      Ali-Line offers a range of profiles engineered to suit both residential and commercial projects.
+    </p>
+
+    <!-- Products Grid -->
+    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:20px; max-width:1100px; margin:0 auto;">
+
+      <!-- Product 1 -->
+      <div style="background:#fff; border-radius:8px; box-shadow:0 4px 10px rgba(0,0,0,0.05); padding:20px; text-align:center;">
+        <img src="images/vgroove.jpg" alt="V-Groove Lining" style="width:100%; max-height:200px; object-fit:contain; margin-bottom:15px;">
+        <h2 style="font-size:18px; margin:10px 0; color:#444;">V-Groove Lining</h2>
+        <p style="font-size:14px; color:#777;">Proven for patios, balconies, interiors, and commercial spaces</p>
+        <p style="font-size:16px; font-weight:bold; color:#222; margin:10px 0;">$0</p>
+        <a href="shop.html" style="display:inline-block; background:#e6c89f; color:#000; padding:10px 20px; border-radius:4px; text-decoration:none; font-weight:bold;">Buy Now</a>
+      </div>
+
+      <!-- Product 2 -->
+      <div style="background:#fff; border-radius:8px; box-shadow:0 4px 10px rgba(0,0,0,0.05); padding:20px; text-align:center;">
+        <img src="images/squaregroove.jpg" alt="Square Groove" style="width:100%; max-height:200px; object-fit:contain; margin-bottom:15px;">
+        <h2 style="font-size:18px; margin:10px 0; color:#444;">Square Groove</h2>
+        <p style="font-size:14px; color:#777;">Sleek profile for modern projects</p>
+        <p style="font-size:16px; font-weight:bold; color:#222; margin:10px 0;">$0</p>
+        <a href="shop.html" style="display:inline-block; background:#e6c89f; color:#000; padding:10px 20px; border-radius:4px; text-decoration:none; font-weight:bold;">Buy Now</a>
+      </div>
+
+      <!-- Product 3 -->
+      <div style="background:#fff; border-radius:8px; box-shadow:0 4px 10px rgba(0,0,0,0.05); padding:20px; text-align:center;">
+        <img src="images/edgecap.jpg" alt="Edge-Cap System" style="width:100%; max-height:200px; object-fit:contain; margin-bottom:15px;">
+        <h2 style="font-size:18px; margin:10px 0; color:#444;">Edge-Cap System</h2>
+        <p style="font-size:14px; color:#777;">Innovative finishing solution for flexibility and clean edges</p>
+        <p style="font-size:16px; font-weight:bold; color:#222; margin:10px 0;">$0</p>
+        <a href="shop.html" style="display:inline-block; background:#e6c89f; color:#000; padding:10px 20px; border-radius:4px; text-decoration:none; font-weight:bold;">Buy Now</a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Footer Placeholder -->
+  <div id="footer-placeholder"></div>
+
+  <!-- Header & Footer Loader -->
+  <script>
+    // Load Header
+    fetch("inc/header.html")
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById("header-placeholder").innerHTML = data;
+        const menuToggle = document.getElementById("menu-toggle");
+        const mainNav = document.getElementById("main-nav");
+        if (menuToggle && mainNav) {
+          menuToggle.addEventListener("click", () => mainNav.classList.toggle("active"));
+        }
+      })
+      .catch(error => console.error("Error loading header:", error));
+
+    // Load Footer
+    fetch("inc/footer.html")
+      .then(response => response.text())
+      .then(data => document.getElementById("footer-placeholder").innerHTML = data)
+      .catch(error => console.error("Error loading footer:", error));
+  </script>
+</body>
+</html>

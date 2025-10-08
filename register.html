@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Register - Ali-Line</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+<body>
+
+  <!-- Header -->
+  <div id="header-placeholder"></div>
+
+  <main style="padding: 80px 20px; background-color: #f9fafb; min-height: 70vh; display: flex; align-items: center; justify-content: center; font-family: Arial, sans-serif;">
+    <div style="background: #fff; max-width: 450px; width: 100%; padding: 40px; border-radius: 12px; box-shadow: 0 6px 16px rgba(0,0,0,0.1); text-align:center;">
+      
+      <h1 style="font-size: 1.8rem; font-weight: 700; color: #002b5c; margin-bottom: 20px;">
+        Create Your Account
+      </h1>
+
+      <!-- Supabase Registration Form -->
+      <form id="registerForm" style="display: grid; gap: 20px; text-align: left;">
+        <div>
+          <label for="fullname" style="font-size: 0.95rem; color: #333; font-weight: 600;">Full Name</label>
+          <input type="text" id="fullname" name="fullname" required
+                style="width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 6px; font-size: 1rem; margin-top: 6px;">
+        </div>
+
+        <div>
+          <label for="email" style="font-size: 0.95rem; color: #333; font-weight: 600;">Email Address</label>
+          <input type="email" id="email" name="email" required
+                style="width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 6px; font-size: 1rem; margin-top: 6px;">
+        </div>
+
+        <div>
+          <label for="password" style="font-size: 0.95rem; color: #333; font-weight: 600;">Password</label>
+          <input type="password" id="password" name="password" required
+                style="width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 6px; font-size: 1rem; margin-top: 6px;">
+        </div>
+
+        <button type="submit"
+                style="background-color: #002b5c; color: #fff; padding: 14px; border: none; border-radius: 6px; font-weight: 600; font-size: 1rem; cursor: pointer; transition:0.3s;">
+          Register
+        </button>
+      </form>
+
+      <div style="margin-top: 20px; font-size: 0.9rem; color: #555;">
+        Already have an account? <a href="login.html" style="color:#002b5c; text-decoration:none;">Login</a>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <div id="footer-placeholder"></div>
+
+  <!-- Supabase Script -->
+  <script src="https://unpkg.com/@supabase/supabase-js"></script>
+  <script>
+    const supabaseUrl = "https://stqibghktqvmhsffvwgz.supabase.co";
+    const supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InN0cWliZ2hrdHF2bWhzZmZ2d2d6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTg4MjAxNzQsImV4cCI6MjA3NDM5NjE3NH0.RTwldFjlqpMgC3W07Iv6CSgLdm2B11hIdxuD_07Aebc"; 
+    const db = supabase.createClient(supabaseUrl, supabaseKey);
+
+    document.getElementById("registerForm").addEventListener("submit", async (e) => {
+      e.preventDefault();
+
+      const fullName = document.getElementById("fullname").value.trim();
+      const email = document.getElementById("email").value.trim();
+      const password = document.getElementById("password").value.trim();
+
+      if (!fullName || !email || !password) {
+        alert("⚠️ Please fill out all fields.");
+        return;
+      }
+
+      const { data, error } = await db.auth.signUp({ email, password });
+
+      if (error) {
+        alert("❌ Error: " + error.message);
+        return;
+      }
+
+      // Save extra info into your "profiles" table (ensure it exists in Supabase)
+      const user = data.user;
+      if (user) {
+        await db.from("profiles").insert([{ id: user.id, full_name: fullName, email }]);
+      }
+
+      alert("✅ Registration successful! Please check your email to confirm.");
+      document.getElementById("registerForm").reset();
+    });
+  </script>
+
+  <!-- Header & Footer Loader -->
+  <script>
+    async function loadLayout() {
+      try {
+        const headerRes = await fetch("inc/header.html");
+        const footerRes = await fetch("inc/footer.html");
+        document.getElementById("header-placeholder").innerHTML = await headerRes.text();
+        document.getElementById("footer-placeholder").innerHTML = await footerRes.text();
+      } catch (err) {
+        console.error("Error loading header/footer:", err);
+      }
+    }
+    loadLayout();
+  </script>
+
+</body>
+</html>

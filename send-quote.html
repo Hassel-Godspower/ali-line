@@ -1,0 +1,61 @@
+<?php
+// ============================
+// Ali-Line | send-quote.php
+// Handles the Request a Quote form submission
+// ============================
+
+// Configure your email
+$to = "info@ali-line.com.au";  // Change to your company email
+$subject = "New Quote Request from ALI-LINE Website";
+
+// Check if form was submitted
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
+    
+    // Sanitize inputs
+    $name     = htmlspecialchars(trim($_POST["name"] ?? ''));
+    $email    = htmlspecialchars(trim($_POST["email"] ?? ''));
+    $phone    = htmlspecialchars(trim($_POST["phone"] ?? ''));
+    $project  = htmlspecialchars(trim($_POST["project"] ?? ''));
+    $message  = htmlspecialchars(trim($_POST["message"] ?? ''));
+
+    // Validate required fields
+    if (empty($name) || empty($email) || empty($phone) || empty($project)) {
+        // Redirect back to form with error query param
+        header("Location: quote.php?error=1");
+        exit;
+    }
+
+    // Build the email content
+    $body = "
+    You have received a new quote request:
+
+    Name: $name
+    Email: $email
+    Phone: $phone
+    Project Type: $project
+
+    Message:
+    $message
+    ";
+
+    // Email headers
+    $headers = "From: no-reply@ali-line.com.au\r\n";
+    $headers .= "Reply-To: $email\r\n";
+
+    // Try sending email
+    if (mail($to, $subject, $body, $headers)) {
+        // Redirect to thank you page
+        header("Location: thank-you.php");
+        exit;
+    } else {
+        // Redirect back with failure
+        header("Location: quote.php?error=2");
+        exit;
+    }
+
+} else {
+    // If accessed directly (not POST)
+    header("Location: quote.php?error=3");
+    exit;
+}
+?>
