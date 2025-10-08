@@ -4,7 +4,6 @@
   <meta charset="UTF-8">
   <title>Download Guide - Ali-Line</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="refresh" content="2;url=./ali-line-product-guide.pdf">
 </head>
 <body style="margin:0; font-family:Arial, sans-serif; background-color:#f9fafb;">
 
@@ -19,15 +18,19 @@
       </h1>
 
       <p style="font-size:1.1rem; color:#555; margin-bottom:30px;">
-        Your product guide is ready. It will download automatically in a moment.
+        Your product guide is ready. Click the button below to download it.
       </p>
 
-      <a id="download-link" href="/ali-line-product-guide.pdf" download="ALI-LINE-Product-Guide.pdf">📥 Download Now</a>
-
-
+      <!-- Download Button -->
+      <a id="download-link" 
+         href="/ali-line-product-guide.pdf" 
+         download="ALI-LINE-Product-Guide.pdf"
+         style="display:inline-block; padding:14px 32px; font-size:1rem; font-weight:bold; color:#fff; background:#002b5c; border-radius:6px; text-decoration:none; transition:0.3s;">
+        📥 Download Guide Now
+      </a>
 
       <p style="margin-top:20px; font-size:0.9rem; color:#777;">
-        If the download doesn’t start automatically, click the button above.
+        Having trouble? Right-click the button and select <b>“Save link as…”</b>
       </p>
     </div>
   </main>
@@ -42,25 +45,17 @@
       .then(response => response.text())
       .then(data => {
         document.getElementById("header-placeholder").innerHTML = data;
-      });
+      })
+      .catch(error => console.error("Error loading header:", error));
 
     // Load Footer
     fetch("./footer.html")
       .then(response => response.text())
       .then(data => {
         document.getElementById("footer-placeholder").innerHTML = data;
-      });
-
-    // Auto trigger download
-    window.addEventListener("load", () => {
-      setTimeout(() => {
-        const link = document.getElementById("download-link");
-        if (link) link.click();
-      }, 1500);
-    });
+      })
+      .catch(error => console.error("Error loading footer:", error));
   </script>
 
 </body>
 </html>
-
-
