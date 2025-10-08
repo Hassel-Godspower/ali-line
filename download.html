@@ -79,7 +79,7 @@
       <!-- Download Button -->
       <div style="margin-top: 40px; text-align: center;">
         <a class="download-btn" 
-           href="./public/ali-line-product-guide.pdf" 
+           href="./ali-line-product-guide.pdf" 
            download="ALI-LINE-Product-Guide.pdf">
           📥 Download Guide
         </a>
@@ -94,7 +94,7 @@
   <!-- Header & Footer Loader -->
   <script>
     // Load Header
-    fetch("./inc/header.html")
+    fetch("./header.html")
       .then(response => response.text())
       .then(data => {
         document.getElementById("header-placeholder").innerHTML = data;
@@ -102,7 +102,7 @@
       .catch(error => console.error("Error loading header:", error));
 
     // Load Footer
-    fetch("./inc/footer.html")
+    fetch("./footer.html")
       .then(response => response.text())
       .then(data => {
         document.getElementById("footer-placeholder").innerHTML = data;
@@ -112,3 +112,4 @@
 
 </body>
 </html>
+
