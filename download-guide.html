@@ -22,7 +22,7 @@
       </p>
 
       <a id="download-link" 
-         href="files/ali-line-product-guide.pdf" 
+         href="./ali-line-product-guide.pdf" 
          download="ALI-LINE-Product-Guide.pdf"
          style="display:inline-block; padding:14px 32px; font-size:1rem; font-weight:bold; color:#fff; background:#002b5c; border-radius:6px; text-decoration:none; transition:0.3s;">
         📥 Download Now
@@ -40,7 +40,7 @@
   <!-- Header & Footer Loader -->
   <script>
     // Load Header
-    fetch("inc/header.html")
+    fetch("./header.html")
       .then(response => response.text())
       .then(data => {
         document.getElementById("header-placeholder").innerHTML = data;
@@ -57,7 +57,7 @@
       .catch(error => console.error("Error loading header:", error));
 
     // Load Footer
-    fetch("inc/footer.html")
+    fetch("./footer.html")
       .then(response => response.text())
       .then(data => {
         document.getElementById("footer-placeholder").innerHTML = data;
@@ -87,3 +87,4 @@
 
 </body>
 </html>
+
