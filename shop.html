@@ -34,7 +34,7 @@
         
         <!-- Product Card -->
         <article class="product-card" data-id="vgroove" data-name="V-Groove Lining" data-price="0" style="background:#fff; border-radius:8px; overflow:hidden; box-shadow:0 6px 18px rgba(0,0,0,0.06);">
-          <img src="images/vgroove.jpg" alt="V-Groove Lining" style="width:100%; height:180px; object-fit:cover;">
+          <img src="./vgroove.jpg" alt="V-Groove Lining" style="width:100%; height:180px; object-fit:cover;">
           <div style="padding:16px;">
             <h2 style="font-size:1.05rem; margin:0 0 8px; color:#222;">V-Groove Lining</h2>
             <p style="margin:0 0 12px; color:#666; font-size:0.95rem;">Proven for patios, balconies, interiors and commercial spaces.</p>
@@ -57,7 +57,7 @@
         </article>
 
         <article class="product-card" data-id="square" data-name="Square Groove" data-price="0" style="background:#fff; border-radius:8px; overflow:hidden; box-shadow:0 6px 18px rgba(0,0,0,0.06);">
-          <img src="images/squaregroove.jpg" alt="Square Groove" style="width:100%; height:180px; object-fit:cover;">
+          <img src="./squaregroove.jpg" alt="Square Groove" style="width:100%; height:180px; object-fit:cover;">
           <div style="padding:16px;">
             <h2 style="font-size:1.05rem; margin:0 0 8px; color:#222;">Square Groove</h2>
             <p style="margin:0 0 12px; color:#666; font-size:0.95rem;">Sleek profile for modern projects and feature ceilings.</p>
@@ -80,7 +80,7 @@
         </article>
 
         <article class="product-card" data-id="edgecap" data-name="Edge-Cap System" data-price="0" style="background:#fff; border-radius:8px; overflow:hidden; box-shadow:0 6px 18px rgba(0,0,0,0.06);">
-          <img src="images/edgecap.jpg" alt="Edge-Cap System" style="width:100%; height:180px; object-fit:cover;">
+          <img src="./edgecap.jpg" alt="Edge-Cap System" style="width:100%; height:180px; object-fit:cover;">
           <div style="padding:16px;">
             <h2 style="font-size:1.05rem; margin:0 0 8px; color:#222;">Edge-Cap System</h2>
             <p style="margin:0 0 12px; color:#666; font-size:0.95rem;">Innovative finishing for flawless edges and transitions.</p>
@@ -119,8 +119,8 @@
   <!-- Load header & footer dynamically -->
   <script>
     async function loadPartials() {
-      const header = await fetch("inc/header.html").then(r => r.text());
-      const footer = await fetch("inc/footer.html").then(r => r.text());
+      const header = await fetch("./header.html").then(r => r.text());
+      const footer = await fetch("./footer.html").then(r => r.text());
       document.getElementById("header-placeholder").innerHTML = header;
       document.getElementById("footer-placeholder").innerHTML = footer;
 
@@ -142,3 +142,4 @@
 
 </body>
 </html>
+
