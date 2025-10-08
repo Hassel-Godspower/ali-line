@@ -380,33 +380,39 @@
   </section>
 
   <!-- Product Guide / Download Section -->
-  <section style="padding: 60px 20px; background-color: #f9fafb; text-align: center;">
-    <div class="guide-grid">
-      <div>
-        <img src="./product-guide-image.jpg" alt="Product Guide" style="width: 100%; border-radius: 8px;">
-      </div>
-      <div style="text-align: left;">
-        <h2 style="font-size: 2rem; font-weight: 700; margin-bottom: 20px; color: #1a1a1a;">
-          Download Our Complete Product Guide
-        </h2>
-        <p style="font-size: 1rem; color: #555; margin-bottom: 30px;">
-          Get detailed information about our full range of products, including specifications, installation guides, and design inspiration.
-        </p>
-        <form action="download-guide.html" method="post" style="display: grid; gap: 15px; max-width: 400px;">
-          <input type="text" name="full_name" placeholder="Full Name" required style="padding: 10px; border: 1px solid #ccc; border-radius: 4px; font-size: 1rem;">
-          <input type="email" name="email" placeholder="Email Address" required style="padding: 10px; border: 1px solid #ccc; border-radius: 4px; font-size: 1rem;">
-          <button type="submit" style="background-color: #002b5c; color: #fff; padding: 12px 24px; border: none; border-radius: 4px; font-weight: 600; font-size: 1rem; cursor: pointer;" 
-            onmouseover="this.style.backgroundColor='#001e42'" 
-            onmouseout="this.style.backgroundColor='#002b5c'">
-            Download Now
-          </button>
-        </form>
-        <p style="margin-top: 20px; font-size: 0.875rem; color: #555; max-width: 400px;">
-          By downloading, you agree to receive occasional updates and offers from ALI-LINE. You can unsubscribe at any time.
-        </p>
-      </div>
+<section style="padding: 60px 20px; background-color: #f9fafb; text-align: center;">
+  <div class="guide-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); align-items: center; gap: 40px; max-width: 1000px; margin: 0 auto;">
+    
+    <div>
+      <img src="./product-guide-image.jpg" alt="Product Guide" style="width: 100%; border-radius: 8px;">
     </div>
-  </section>
+    
+    <div style="text-align: left;">
+      <h2 style="font-size: 2rem; font-weight: 700; margin-bottom: 20px; color: #1a1a1a;">
+        Download Our Complete Product Guide
+      </h2>
+      <p style="font-size: 1rem; color: #555; margin-bottom: 30px;">
+        Get detailed information about our full range of products, including specifications, installation guides, and design inspiration.
+      </p>
+
+      <!-- ✅ Updated form -->
+      <form action="https://ali-line.vercel.app/download.html" method="get" style="display: grid; gap: 15px; max-width: 400px;">
+        <input type="text" name="full_name" placeholder="Full Name" required style="padding: 10px; border: 1px solid #ccc; border-radius: 4px; font-size: 1rem;">
+        <input type="email" name="email" placeholder="Email Address" required style="padding: 10px; border: 1px solid #ccc; border-radius: 4px; font-size: 1rem;">
+        
+        <button type="submit" 
+          style="background-color: #002b5c; color: #fff; padding: 12px 24px; border: none; border-radius: 4px; font-weight: 600; font-size: 1rem; cursor: pointer; transition: 0.3s;">
+          Download Now
+        </button>
+      </form>
+
+      <p style="margin-top: 20px; font-size: 0.875rem; color: #555; max-width: 400px;">
+        By downloading, you agree to receive occasional updates and offers from ALI-LINE. You can unsubscribe at any time.
+      </p>
+    </div>
+  </div>
+</section>
+
 
   <!-- Inline responsive CSS -->
   <style>
@@ -816,6 +822,7 @@
 
 </body>
 </html>
+
 
 
 
