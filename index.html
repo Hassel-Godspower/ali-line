@@ -60,7 +60,7 @@
 
   <!-- Hero Section -->
   <section style="
-    background-image: url('./images/hero-bg.jpg');
+    background-image: url('./hero-bg.jpg');
     background-size: cover;
     background-position: center;
     position: relative;
@@ -124,12 +124,12 @@
     </div>
   </section>
   <script>
-    // Load Header
-    fetch("./inc/header.html")
+  // Load Header
+  fetch("./header.html")
     .then(response => response.text())
     .then(data => {
       document.getElementById("header-placeholder").innerHTML = data;
-    
+
       // Reattach JS for hamburger menu after header loads
       const menuToggle = document.getElementById("menu-toggle");
       const mainNav = document.getElementById("main-nav");
@@ -140,16 +140,15 @@
       }
     })
     .catch(error => console.error("Error loading header:", error));
-    
-    // Load Footer
-    fetch("./inc/footer.html")
+
+  // Load Footer
+  fetch("./footer.html")
     .then(response => response.text())
     .then(data => {
       document.getElementById("footer-placeholder").innerHTML = data;
     })
     .catch(error => console.error("Error loading footer:", error));
-  </script>
-
+</script>
 
   <!-- Meet Ali-Line -->
   <section style="padding:60px 20px; text-align:center; background:#fff;">
@@ -179,7 +178,7 @@
 
       <!-- CARD 1 -->
       <div style="background:#fff; border-radius:8px; box-shadow:0 4px 10px rgba(0,0,0,0.08); overflow:hidden;">
-        <img src="./images/feature1.jpg" alt="Classic White" style="width:100%; height:160px; object-fit:cover;">
+        <img src="./feature1.jpg" alt="Classic White" style="width:100%; height:160px; object-fit:cover;">
         <div style="padding:20px; text-align:left;">
           <h3 style="font-size:1.125rem; font-weight:700; margin-bottom:10px;">Classic White</h3>
           <p style="font-size:0.9rem; color:#555;">Our most popular finish, perfect for creating bright, open spaces.</p>
@@ -188,7 +187,7 @@
 
       <!-- CARD 2 -->
       <div style="background:#fff; border-radius:8px; box-shadow:0 4px 10px rgba(0,0,0,0.08); overflow:hidden;">
-        <img src="./images/feature2.jpg" alt="Matte Black" style="width:100%; height:160px; object-fit:cover;">
+        <img src="./feature2.jpg" alt="Matte Black" style="width:100%; height:160px; object-fit:cover;">
         <div style="padding:20px; text-align:left;">
           <h3 style="font-size:1.125rem; font-weight:700; margin-bottom:10px;">Matte Black</h3>
           <p style="font-size:0.9rem; color:#555;">Bold and sophisticated, ideal for creating statement ceilings.</p>
@@ -197,7 +196,7 @@
 
       <!-- CARD 3 -->
       <div style="background:#fff; border-radius:8px; box-shadow:0 4px 10px rgba(0,0,0,0.08); overflow:hidden;">
-        <img src="./images/feature3.jpg" alt="Brushed Aluminium" style="width:100%; height:160px; object-fit:cover;">
+        <img src="./feature3.jpg" alt="Brushed Aluminium" style="width:100%; height:160px; object-fit:cover;">
         <div style="padding:20px; text-align:left;">
           <h3 style="font-size:1.125rem; font-weight:700; margin-bottom:10px;">Brushed Aluminium</h3>
           <p style="font-size:0.9rem; color:#555;">A contemporary metallic finish that adds texture and depth.</p>
@@ -206,7 +205,7 @@
 
       <!-- CARD 4 -->
       <div style="background:#fff; border-radius:8px; box-shadow:0 4px 10px rgba(0,0,0,0.08); overflow:hidden;">
-        <img src="./images/feature4.jpg" alt="Timber Look" style="width:100%; height:160px; object-fit:cover;">
+        <img src="./feature4.jpg" alt="Timber Look" style="width:100%; height:160px; object-fit:cover;">
         <div style="padding:20px; text-align:left;">
           <h3 style="font-size:1.125rem; font-weight:700; margin-bottom:10px;">Timber Look</h3>
           <p style="font-size:0.9rem; color:#555;">The warmth of wood with the durability of aluminium.</p>
@@ -296,7 +295,7 @@
       <li>✔ Strong, durable, and low maintenance</li>
     </ul>
     <div style="margin-top:30px;">
-      <img src="./images/product-closeup1.jpg" alt="Ali-Line Closeup" style="max-width:600px; width:100%; border-radius:8px; display:block; margin:auto;">
+      <img src="./product-closeup1.jpg" alt="Ali-Line Closeup" style="max-width:600px; width:100%; border-radius:8px; display:block; margin:auto;">
     </div>
   </section>
 
@@ -309,7 +308,7 @@
       grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
       gap:20px; max-width:1000px; margin:0 auto;
     ">
-      <img src="./images/application11.jpg" alt="Ali-Line Application" style="width:100%; border-radius:8px;">
+      <img src="./application11.jpg" alt="Ali-Line Application" style="width:100%; border-radius:8px;">
     </div>
   </section>
 
@@ -323,7 +322,7 @@
       <li>• Anodised Metallics – premium, coastal ready</li>
     </ul>
     <p style="max-width:700px; margin:0 auto 30px;">All finishes are backed by warranty, colour consistency, and resistance to salt and dust.</p>
-    <img src="./images/finishes1.jpg" alt="Ali-Line Finishes" style="max-width:600px; width:100%; border-radius:8px; display:block; margin:auto;">
+    <img src="./finishes1.jpg" alt="Ali-Line Finishes" style="max-width:600px; width:100%; border-radius:8px; display:block; margin:auto;">
   </section>
 
   <!-- Section 5: Closing Statement -->
@@ -341,7 +340,7 @@
       display:inline-block;
     ">Request a Quote</a>
     <div style="margin-top:30px;">
-      <img src="./images/lifestyle.jpg" alt="Lifestyle" style="max-width:800px; width:100%; border-radius:8px; display:block; margin:auto;">
+      <img src="./lifestyle.jpg" alt="Lifestyle" style="max-width:800px; width:100%; border-radius:8px; display:block; margin:auto;">
     </div>
   </section>
 
@@ -356,7 +355,7 @@
     
     <!-- Feature Box 1 -->
     <div style="flex:1; min-width:250px; max-width:300px; background:#f9f9f9; padding:30px; border-radius:10px;">
-      <img src="./images/australian-made.png" alt="Australian Made" 
+      <img src="./australian-made.png" alt="Australian Made" 
            style="width:80px; margin:0 auto 20px auto; display:block;">
       <h3>Australian Made</h3>
       <p>Proudly manufactured in Australia using premium materials and supporting local industry.</p>
@@ -364,7 +363,7 @@
     
     <!-- Feature Box 2 -->
     <div style="flex:1; min-width:250px; max-width:300px; background:#f9f9f9; padding:30px; border-radius:10px;">
-      <img src="./images/rocket-1206.png" alt="Quick Installation" 
+      <img src="./rocket-1206.png" alt="Quick Installation" 
            style="width:80px; margin:0 auto 20px auto; display:block;">
       <h3>Quick Installation</h3>
       <p>Our innovative design allows for fast and easy installation, saving you time and money.</p>
@@ -372,7 +371,7 @@
     
     <!-- Feature Box 3 -->
     <div style="flex:1; min-width:250px; max-width:300px; background:#f9f9f9; padding:30px; border-radius:10px;">
-      <img src="images/quality-3602.png" alt="Quality Guaranteed" 
+      <img src="./quality-3602.png" alt="Quality Guaranteed" 
            style="width:80px; margin:0 auto 20px auto; display:block;">
       <h3>Quality Guaranteed</h3>
       <p>All our products come with a comprehensive warranty and are built to last in Australian conditions.</p>
@@ -384,7 +383,7 @@
   <section style="padding: 60px 20px; background-color: #f9fafb; text-align: center;">
     <div class="guide-grid">
       <div>
-        <img src="./images/product-guide-image.jpg" alt="Product Guide" style="width: 100%; border-radius: 8px;">
+        <img src="./product-guide-image.jpg" alt="Product Guide" style="width: 100%; border-radius: 8px;">
       </div>
       <div style="text-align: left;">
         <h2 style="font-size: 2rem; font-weight: 700; margin-bottom: 20px; color: #1a1a1a;">
@@ -568,13 +567,13 @@
       <div class="grid-3" style="gap:20px; max-width:1200px; margin:0 auto;">
 
         <!-- Project 1 -->
-        <div class="project-card" style="background-image:url('./images/project1.jpg');"
+        <div class="project-card" style="background-image:url('./project1.jpg');"
              onmouseover="this.querySelector('.project-overlay').style.opacity='1';"
              onmouseout="this.querySelector('.project-overlay').style.opacity='0';">
           <div class="project-overlay">
             <h3 style="margin:0 0 10px; font-size:1.1rem;">Modern Alfresco Area</h3>
             <p style="margin:0 0 20px; font-size:0.9rem;">Matte Black panels in Bondi Beach residence</p>
-            <a href="javascript:void(0)" onclick="openModalImage('./images/project1.jpg')"
+            <a href="javascript:void(0)" onclick="openModalImage('./project1.jpg')"
                style="display:inline-block;padding:8px 12px;border:2px solid #fff;color:#fff;border-radius:4px;font-weight:bold;text-decoration:none;"
                onmouseover="this.style.backgroundColor='#fff'; this.style.color='#007bff';"
                onmouseout="this.style.backgroundColor='transparent'; this.style.color='#fff';">View Project</a>
@@ -582,13 +581,13 @@
         </div>
 
         <!-- Project 2 -->
-        <div class="project-card" style="background-image:url('./images/project2.jpg');"
+        <div class="project-card" style="background-image:url('./project2.jpg');"
              onmouseover="this.querySelector('.project-overlay').style.opacity='1';"
              onmouseout="this.querySelector('.project-overlay').style.opacity='0';">
           <div class="project-overlay">
             <h3 style="margin:0 0 10px; font-size:1.1rem;">Outdoor Entertainment Deck</h3>
             <p style="margin:0 0 20px; font-size:0.9rem;">Square Groove panels in Sydney Hills District</p>
-            <a href="javascript:void(0)" onclick="openModalImage('./images/project2.jpg')"
+            <a href="javascript:void(0)" onclick="openModalImage('./project2.jpg')"
                style="display:inline-block;padding:8px 12px;border:2px solid #fff;color:#fff;border-radius:4px;font-weight:bold;text-decoration:none;"
                onmouseover="this.style.backgroundColor='#fff'; this.style.color='#007bff';"
                onmouseout="this.style.backgroundColor='transparent'; this.style.color='#fff';">View Project</a>
@@ -596,13 +595,13 @@
         </div>
 
         <!-- Project 3 -->
-        <div class="project-card" style="background-image:url('./images/project3.jpg');"
+        <div class="project-card" style="background-image:url('./project3.jpg');"
              onmouseover="this.querySelector('.project-overlay').style.opacity='1';"
              onmouseout="this.querySelector('.project-overlay').style.opacity='0';">
           <div class="project-overlay">
             <h3 style="margin:0 0 10px; font-size:1.1rem;">Luxury Balcony Finish</h3>
             <p style="margin:0 0 20px; font-size:0.9rem;">Edge-Cap detail at a Melbourne apartment</p>
-            <a href="javascript:void(0)" onclick="openModalImage('vimages/project3.jpg')"
+            <a href="javascript:void(0)" onclick="openModalImage('./project3.jpg')"
                style="display:inline-block;padding:8px 12px;border:2px solid #fff;color:#fff;border-radius:4px;font-weight:bold;text-decoration:none;"
                onmouseover="this.style.backgroundColor='#fff'; this.style.color='#007bff';"
                onmouseout="this.style.backgroundColor='transparent'; this.style.color='#fff';">View Project</a>
@@ -610,13 +609,13 @@
         </div>
 
         <!-- Project 4 -->
-        <div class="project-card" style="background-image:url('./images/project4.jpg');"
+        <div class="project-card" style="background-image:url('./project4.jpg');"
              onmouseover="this.querySelector('.project-overlay').style.opacity='1';"
              onmouseout="this.querySelector('.project-overlay').style.opacity='0';">
           <div class="project-overlay">
             <h3 style="margin:0 0 10px; font-size:1.1rem;">Commercial Office Lobby</h3>
             <p style="margin:0 0 20px; font-size:0.9rem;">Seamless paneling in Brisbane corporate tower</p>
-            <a href="javascript:void(0)" onclick="openModalImage('./images/project4.jpg')"
+            <a href="javascript:void(0)" onclick="openModalImage('./project4.jpg')"
                style="display:inline-block;padding:8px 12px;border:2px solid #fff;color:#fff;border-radius:4px;font-weight:bold;text-decoration:none;"
                onmouseover="this.style.backgroundColor='#fff'; this.style.color='#007bff';"
                onmouseout="this.style.backgroundColor='transparent'; this.style.color='#fff';">View Project</a>
@@ -624,13 +623,13 @@
         </div>
 
         <!-- Project 5 -->
-        <div class="project-card" style="background-image:url('./images/project5.jpg');"
+        <div class="project-card" style="background-image:url('./project5.jpg');"
              onmouseover="this.querySelector('.project-overlay').style.opacity='1';"
              onmouseout="this.querySelector('.project-overlay').style.opacity='0';">
           <div class="project-overlay">
             <h3 style="margin:0 0 10px; font-size:1.1rem;">Poolside Luxury</h3>
             <p style="margin:0 0 20px; font-size:0.9rem;">Weather-resistant V-Groove finish in Gold Coast villa</p>
-            <a href="javascript:void(0)" onclick="openModalImage('./images/project5.jpg')"
+            <a href="javascript:void(0)" onclick="openModalImage('./project5.jpg')"
                style="display:inline-block;padding:8px 12px;border:2px solid #fff;color:#fff;border-radius:4px;font-weight:bold;text-decoration:none;"
                onmouseover="this.style.backgroundColor='#fff'; this.style.color='#007bff';"
                onmouseout="this.style.backgroundColor='transparent'; this.style.color='#fff';">View Project</a>
@@ -638,13 +637,13 @@
         </div>
 
         <!-- Project 6 -->
-        <div class="project-card" style="background-image:url('images/project6.jpg');"
+        <div class="project-card" style="background-image:url('./project6.jpg');"
              onmouseover="this.querySelector('.project-overlay').style.opacity='1';"
              onmouseout="this.querySelector('.project-overlay').style.opacity='0';">
           <div class="project-overlay">
             <h3 style="margin:0 0 10px; font-size:1.1rem;">Coastal Home Interior</h3>
             <p style="margin:0 0 20px; font-size:0.9rem;">Light Oak lining in Byron Bay retreat</p>
-            <a href="javascript:void(0)" onclick="openModalImage('./images/project6.jpg')"
+            <a href="javascript:void(0)" onclick="openModalImage('./project6.jpg')"
                style="display:inline-block;padding:8px 12px;border:2px solid #fff;color:#fff;border-radius:4px;font-weight:bold;text-decoration:none;"
                onmouseover="this.style.backgroundColor='#fff'; this.style.color='#007bff';"
                onmouseout="this.style.backgroundColor='transparent'; this.style.color='#fff';">View Project</a>
@@ -817,4 +816,5 @@
 
 </body>
 </html>
+
 
