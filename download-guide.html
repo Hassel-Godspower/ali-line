@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <title>Download Guide - Ali-Line</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="refresh" content="2;url=./ali-line-product-guide.pdf">
 </head>
 <body style="margin:0; font-family:Arial, sans-serif; background-color:#f9fafb;">
 
@@ -18,7 +19,7 @@
       </h1>
 
       <p style="font-size:1.1rem; color:#555; margin-bottom:30px;">
-        Your product guide is ready to download. It should begin automatically in a moment.
+        Your product guide is ready. It will download automatically in a moment.
       </p>
 
       <a id="download-link" 
@@ -44,47 +45,23 @@
       .then(response => response.text())
       .then(data => {
         document.getElementById("header-placeholder").innerHTML = data;
-
-        // Hamburger Menu Logic
-        const menuToggle = document.getElementById("menu-toggle");
-        const mainNav = document.getElementById("main-nav");
-        if (menuToggle && mainNav) {
-          menuToggle.addEventListener("click", () => {
-            mainNav.classList.toggle("active");
-          });
-        }
-      })
-      .catch(error => console.error("Error loading header:", error));
+      });
 
     // Load Footer
     fetch("./footer.html")
       .then(response => response.text())
       .then(data => {
         document.getElementById("footer-placeholder").innerHTML = data;
-      })
-      .catch(error => console.error("Error loading footer:", error));
-  </script>
+      });
 
-  <!-- Download Logic -->
-  <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      // Retrieve saved name/email from localStorage (set on the form page)
-      const fullName = localStorage.getItem("full_name") || "there";
-      const email = localStorage.getItem("email");
-
-      // Update thank-you message
-      document.getElementById("thank-you-message").textContent = `Thank You, ${fullName}!`;
-
-      // Auto-download after delay
+    // Auto trigger download
+    window.addEventListener("load", () => {
       setTimeout(() => {
         const link = document.getElementById("download-link");
-        if (link) {
-          link.click();
-        }
+        if (link) link.click();
       }, 1500);
     });
   </script>
 
 </body>
 </html>
-
