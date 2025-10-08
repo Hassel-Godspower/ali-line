@@ -1,0 +1,12 @@
+<?php
+$host = "localhost"; 
+$user = "your_mysql_username"; 
+$pass = "your_mysql_password"; 
+$db   = "ali_line"; 
+
+$conn = new mysqli($host, $user, $pass, $db);
+
+if ($conn->connect_error) {
+    die("Database connection failed: " . $conn->connect_error);
+}
+?>

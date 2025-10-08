@@ -1,0 +1,168 @@
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: "Poppins", Arial, sans-serif; background-color: #fff; }
+  a { text-decoration: none; color: inherit; }
+  ul { list-style: none; }
+
+  .top-header {
+    background-color: #002b5c;
+    color: white;
+    padding: 0.75rem 0;
+    position: relative;
+    z-index: 1000;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .logo a {
+    font-size: 2rem;
+    font-weight: bold;
+    color: white;
+  }
+
+  .main-nav {
+    display: flex;
+    padding-top: 10px;
+    gap: 2rem;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 1.5rem;
+    padding-top: 10px;
+  }
+
+  .nav-links a {
+    color: white;
+    padding: 12px 12px;
+    transition: background 0.3s;
+  }
+
+  .nav-links a:hover,
+  .nav-links .active {
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 4px;
+  }
+
+  .nav-actions {
+    display: flex;
+    gap: 1rem;
+  }
+  .login-link { color: white; padding-top:10px; font-size: 1rem; }
+  .shop-btn {
+    background-color: white;
+    color: #002b5c;
+    padding: 10px 14px;
+    border-radius: 4px;
+    font-weight: bold;
+    transition: background 0.3s, color 0.3s;
+  }
+  .shop-btn:hover { background-color: #ccc; color: #001e42; }
+
+  .menu-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+  }
+  .menu-toggle span {
+    width: 25px;
+    height: 3px;
+    background: white;
+    border-radius: 2px;
+  }
+
+  @media (max-width: 768px) {
+    .main-nav {
+      display: none;
+      flex-direction: column;
+      background: white;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 100%;
+      padding: 1rem 0;
+      border-top: 2px solid #002b5c;
+    }
+
+    .main-nav.active {
+      display: flex;
+      animation: slideDown 0.3s ease-out forwards;
+    }
+
+    .nav-links {
+      flex-direction: column;
+      gap: 1rem;
+      text-align: left;
+      padding: 0 1rem;
+    }
+
+    .nav-links a {
+      color: #002b5c;
+      font-size: 1.1rem;
+    }
+    .login-link { color: #002b5c; }
+    .nav-actions {
+      flex-direction: column;
+      gap: 0.75rem;
+      padding: 1rem;
+      text-align: center;
+    }
+
+    .menu-toggle {
+      display: flex;
+    }
+  }
+
+  @keyframes slideDown {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+</style>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+<header class="top-header">
+  <div class="container">
+    <div class="logo">
+      <a href="index.html">ALI-LINE</a>
+    </div>
+
+    <div class="menu-toggle" id="menu-toggle">
+      <span></span><span></span><span></span>
+    </div>
+
+    <nav class="main-nav" id="main-nav">
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="products.html">Products</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <div class="nav-actions">
+        <a href="login.html" class="login-link">Trade Login</a>
+        <a href="shop.html" class="shop-btn">Shop Now</a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    const menuToggle = document.getElementById('menu-toggle');
+    const mainNav = document.getElementById('main-nav');
+
+    if (menuToggle && mainNav) {
+      menuToggle.addEventListener('click', () => {
+        mainNav.classList.toggle('active');
+      });
+    }
+  });
+</script>
+<!-- HEADER END -->
