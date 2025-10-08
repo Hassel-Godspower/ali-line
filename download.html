@@ -42,6 +42,22 @@
       line-height: 1.7;
       margin-bottom: 20px;
     }
+
+    .download-btn {
+      display: inline-block;
+      padding: 14px 32px;
+      font-size: 1rem;
+      font-weight: bold;
+      color: #fff;
+      background-color: #002b5c;
+      border-radius: 6px;
+      text-decoration: none;
+      transition: background-color 0.3s ease;
+    }
+
+    .download-btn:hover {
+      background-color: #00408d;
+    }
   </style>
 </head>
 <body>
@@ -52,13 +68,23 @@
   <main>
     <div class="content-box">
       <h1>Ali-Line Product Guide</h1>
-      <p>Welcome to our product guide! Here, you’ll find a detailed overview of Ali-Line’s lining systems, product specifications, and installation insights to help you choose the best solutions for your project.</p>
+      <p>Welcome to our product guide! Here, you’ll find a detailed overview of Ali-Line’s lighting systems, product specifications, and installation insights to help you choose the best solutions for your project.</p>
 
-      <p>Ali-Line specializes in high-quality, energy-efficient lining solutions designed for both commercial and industrial spaces. Each product is crafted with precision engineering, durability, and design flexibility in mind.</p>
+      <p>Ali-Line specializes in high-quality, energy-efficient lighting solutions designed for both commercial and industrial spaces. Each product is crafted with precision engineering, durability, and design flexibility in mind.</p>
 
       <p>Explore our range, learn about our technology, and discover why Ali-Line is the preferred choice for architects, engineers, and contractors across Australia.</p>
 
       <p>Need help choosing the right lighting solution? <a href="contact.html" style="color:#002b5c; font-weight:bold; text-decoration:none;">Contact our support team</a> — we’re here to assist you.</p>
+
+      <!-- Download Button -->
+      <div style="margin-top: 40px; text-align: center;">
+        <a class="download-btn" 
+           href="./public/ali-line-product-guide.pdf" 
+           download="ALI-LINE-Product-Guide.pdf">
+          📥 Download Guide
+        </a>
+      </div>
+
     </div>
   </main>
 
@@ -68,7 +94,7 @@
   <!-- Header & Footer Loader -->
   <script>
     // Load Header
-    fetch("./header.html")
+    fetch("./inc/header.html")
       .then(response => response.text())
       .then(data => {
         document.getElementById("header-placeholder").innerHTML = data;
@@ -76,7 +102,7 @@
       .catch(error => console.error("Error loading header:", error));
 
     // Load Footer
-    fetch("./footer.html")
+    fetch("./inc/footer.html")
       .then(response => response.text())
       .then(data => {
         document.getElementById("footer-placeholder").innerHTML = data;
